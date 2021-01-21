@@ -6,6 +6,7 @@ import Css.Transitions exposing (transition)
 import Html.Styled exposing (Html, a, div, footer, img, li, text, toUnstyled, ul)
 import Html.Styled.Attributes exposing (css, src)
 import Html.Styled.Events exposing (onClick)
+import Images
 
 
 main =
@@ -13,7 +14,8 @@ main =
 
 
 type Model
-    = Enteriors
+    = Home
+    | Enteriors
     | Moodboards
     | About
     | Contact
@@ -21,11 +23,12 @@ type Model
 
 init : Model
 init =
-    Enteriors
+    Home
 
 
 type Msg
-    = EnteriorsClicked
+    = HomeClicked
+    | EnteriorsClicked
     | MoodboardsClicked
     | AboutClicked
     | ContactClicked
@@ -34,6 +37,9 @@ type Msg
 update : Msg -> Model -> Model
 update msg _ =
     case msg of
+        HomeClicked ->
+            Home
+
         EnteriorsClicked ->
             Enteriors
 
@@ -51,8 +57,9 @@ view : Model -> Html Msg
 view model =
     div
         [ css
-            [ width (px 1000)
+            [ width (px standardWidth)
             , margin auto
+            , color theme.primary
             ]
         ]
         [ div
@@ -64,13 +71,15 @@ view model =
 viewHeader : Model -> Html Msg
 viewHeader model =
     let
-        highlightOnHover =
+        jumpOnHover =
             css
-                [ hover
-                    [ backgroundColor theme.primary
+                [ position relative
+                , top (px 0)
+                , hover
+                    [ top (px -10)
                     ]
                 , transition
-                    [ Css.Transitions.backgroundColor 500
+                    [ Css.Transitions.top3 200 20 Css.Transitions.ease
                     ]
                 ]
 
@@ -90,37 +99,42 @@ viewHeader model =
             , justifyContent spaceBetween
             , alignItems flexEnd
             , fontSize (px 24)
-            , padding2 (px 60) zero
+            , padding3 (px 40) zero (px 20)
             ]
         ]
         [ logo
         , div
-            [ css
+            [ onClick HomeClicked
+            , jumpOnHover
+            , css
                 [ flexGrow (num 1)
                 ]
             ]
-            [ text "| Fekete Roberta" ]
+            [ text "| Fekete Roberta belsőépítész" ]
         , div
             [ onClick EnteriorsClicked
-            , highlightOnHover
+            , jumpOnHover
             , css
                 [ flexGrow (num 1) ]
             ]
             [ text " | Enteriőr" ]
         , div
             [ onClick MoodboardsClicked
+            , jumpOnHover
             , css
                 [ flexGrow (num 1) ]
             ]
-            [ text " | Moodboardok" ]
+            [ text " | Látványterv" ]
         , div
             [ onClick AboutClicked
+            , jumpOnHover
             , css
                 [ flexGrow (num 1) ]
             ]
             [ text " | Rólam" ]
         , div
             [ onClick ContactClicked
+            , jumpOnHover
             , css
                 [ flexGrow (num 1) ]
             ]
@@ -137,7 +151,9 @@ viewFooter =
             ]
         ]
         [ footer
-            []
+            [ css
+                [ padding3 (px 40) zero (px 20) ]
+            ]
             [ text "© 2020 Fekete Roberta" ]
         ]
 
@@ -156,6 +172,9 @@ content model =
 content_ : Model -> Html Msg
 content_ model =
     case model of
+        Home ->
+            home
+
         Enteriors ->
             enteriors
 
@@ -169,52 +188,112 @@ content_ model =
             contact
 
 
+home : Html Msg
+home =
+    wrap "assets/portré2.jpg"
+
+
 enteriors : Html Msg
 enteriors =
-    let
-        wrap image =
-            img
-                [ Html.Styled.Attributes.width 960
-                , src image
-                ]
-                []
-    in
-    div
-        []
-        [ wrap "assets/enteriorok/IMG_1407_edited.jpg"
-        , wrap "assets/enteriorok/IMG_1441_edited.jpg"
-        , wrap "assets/enteriorok/IMG_1450_edited.jpg"
-        , wrap "assets/enteriorok/IMG_1476_edited.jpg"
-        , wrap "assets/enteriorok/IMG_1489_edited.jpg"
-        , wrap "assets/enteriorok/IMG_1495_edited.jpg"
-        , wrap "assets/enteriorok/IMG_1501_edited_true-color.jpg"
-        , wrap "assets/enteriorok/IMG_1513_edited.jpg"
-        ]
+    Images.enteriorok
+        |> List.map wrap
+        |> div []
 
 
 moodboards : Html Msg
 moodboards =
-    div [] [ text "3D Moodboardok...\n" ]
+    Images.latvanytervek
+        |> List.map wrap
+        |> div []
 
 
 about : Html Msg
 about =
-    div [] [ text "Belső terek kialakítása magán és céges ügyfeleknek egyedi igény szerint, megtalálva a megfelelő harmóniát, stílust, funkcionalitást. Segítek összhangot teremteni...\n" ]
+    div
+        [ css
+            [ fontStyle italic
+            , displayFlex
+            , alignItems center
+            , height (px standardHeight)
+            ]
+        ]
+        [ img
+            [ Html.Styled.Attributes.width (standardWidth // 2)
+            , src "assets/portré1.jpg"
+            ]
+            []
+        , div
+            [ css
+                [ padding4 zero zero zero (px 30)
+                , lineHeight (num 2.5)
+                ]
+            ]
+            [ text "Belső terek kialakítása magán és céges ügyfeleknek egyedi igény szerint, megtalálva a megfelelő harmóniát, stílust, funkcionalitást. Segítek összhangot teremteni.\n" ]
+        ]
 
 
 contact : Html Msg
 contact =
-    div []
-        [ ul
-            []
-            [ li [] [ text "Telefon: +36 70 338 1317" ]
-            , li [] [ text "Email: fekete.roberta@gmail.com" ]
+    div
+        [ css
+            [ displayFlex
+            , alignItems center
+            , justifyContent center
+            , height (px standardHeight)
+            ]
+        ]
+        [ div
+            [ css
+                [ displayFlex
+                , flexDirection column
+                , alignItems flexStart
+                , justifyContent center
+                , height (px (standardHeight / 4))
+                ]
+            ]
+            [ div
+                [ css
+                    [ display inlineFlex
+                    , alignItems center
+                    , justifyContent spaceBetween
+                    , padding (px 10)
+                    , width (pct 100)
+                    ]
+                ]
+                [ img [ src "assets/phone.svg" ] [], text "+36 70 338 1317" ]
+            , div
+                [ css
+                    [ display inlineFlex
+                    , alignItems center
+                    , justifyContent spaceBetween
+                    , padding (px 10)
+                    , width (pct 100)
+                    ]
+                ]
+                [ img [ src "assets/email.svg" ] [], text "fekete.roberta@gmail.com" ]
             ]
         ]
 
 
 theme : { secondary : Color, primary : Color }
 theme =
-    { primary = hex "d1d1d1"
+    { primary = rgb 0 0 0
     , secondary = rgb 250 240 230
     }
+
+
+wrap : String -> Html msg
+wrap image =
+    img
+        [ Html.Styled.Attributes.width standardWidth
+        , src image
+        ]
+        []
+
+
+standardWidth =
+    960
+
+
+standardHeight =
+    640
