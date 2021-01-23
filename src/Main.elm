@@ -9,12 +9,20 @@ import Html.Styled.Events exposing (onClick)
 import Images
 
 
+main : Program () Model Msg
 main =
-    Browser.sandbox { init = init, update = update, view = view >> toUnstyled }
+    Browser.element
+        { init = \_ -> initialModel |> cmdNone
+        , subscriptions = \_ -> Sub.none
+        , update = update
+        , view = view >> toUnstyled
+        }
 
 
 type alias Model =
-    { tab : Tab }
+    { tab : Tab
+    , carouselState : Carousel.State
+    }
 
 
 type Tab
@@ -25,9 +33,11 @@ type Tab
     | Contact
 
 
-init : Model
-init =
-    { tab = Home }
+initialModel : Model
+initialModel =
+    { tab = Home
+    , carouselState = Carousel.initialState
+    }
 
 
 type Msg
@@ -38,23 +48,28 @@ type Msg
     | ContactClicked
 
 
-update : Msg -> Model -> Model
+update : Msg -> Model -> ( Model, Cmd msg )
 update msg model =
     case msg of
         HomeClicked ->
-            { model | tab = Home }
+            { model | tab = Home } |> cmdNone
 
         EnteriorsClicked ->
-            { model | tab = Enteriors }
+            { model | tab = Enteriors } |> cmdNone
 
         MoodboardsClicked ->
-            { model | tab = Moodboards }
+            { model | tab = Moodboards } |> cmdNone
 
         AboutClicked ->
-            { model | tab = About }
+            { model | tab = About } |> cmdNone
 
         ContactClicked ->
-            { model | tab = Contact }
+            { model | tab = Contact } |> cmdNone
+
+
+cmdNone : Model -> ( Model, Cmd msg )
+cmdNone model =
+    ( model, Cmd.none )
 
 
 view : Model -> Html Msg
