@@ -5,8 +5,9 @@ import Bootstrap.Carousel.Slide as Slide
 import Browser
 import Css exposing (..)
 import Css.Transitions exposing (transition)
-import Html.Styled exposing (Html, a, div, img, li, text, toUnstyled, ul)
-import Html.Styled.Attributes exposing (css, src)
+import Html.Attributes
+import Html.Styled exposing (Html, a, div, fromUnstyled, img, li, text, toUnstyled, ul)
+import Html.Styled.Attributes exposing (attribute, class, css, src)
 import Html.Styled.Events exposing (onClick)
 import Images
 
@@ -24,6 +25,7 @@ main =
 type alias Model =
     { tab : Tab
     , carouselState : Carousel.State
+    , carouselVisible : Maybe Tab
     }
 
 
@@ -39,6 +41,7 @@ initialModel : Model
 initialModel =
     { tab = Home
     , carouselState = Carousel.initialState
+    , carouselVisible = Nothing
     }
 
 
@@ -48,6 +51,8 @@ type Msg
     | MoodboardsClicked
     | AboutClicked
     | ContactClicked
+    | EnteriorsImageClicked
+    | MoodboardsImageClicked
     | CarouselMsg Carousel.Msg
 
 
@@ -69,6 +74,12 @@ update msg model =
         ContactClicked ->
             { model | tab = Contact } |> cmdNone
 
+        EnteriorsImageClicked ->
+            { model | carouselVisible = Just Enteriors } |> cmdNone
+
+        MoodboardsImageClicked ->
+            { model | carouselVisible = Just Moodboards } |> cmdNone
+
         CarouselMsg subMsg ->
             { model | carouselState = Carousel.update subMsg model.carouselState } |> cmdNone
 
@@ -80,6 +91,18 @@ cmdNone model =
 
 view : Model -> Html Msg
 view model =
+    div [ class "app" ]
+        [ case model.carouselVisible of
+            Just tab ->
+                viewCarousel tab model
+
+            Nothing ->
+                viewPage model
+        ]
+
+
+viewPage : Model -> Html Msg
+viewPage model =
     div
         [ css
             [ width (px standardWidth)
@@ -91,6 +114,33 @@ view model =
             [ css [ width (pct 100) ] ]
             (header model :: content model :: [ footer ])
         ]
+
+
+viewCarousel : Tab -> Model -> Html Msg
+viewCarousel tab model =
+    let
+        images =
+            case tab of
+                Enteriors ->
+                    Images.enteriorok
+
+                Moodboards ->
+                    Images.latvanytervek
+
+                _ ->
+                    []
+
+        slides =
+            images
+                |> List.map (Slide.image [ Html.Attributes.class "slide" ])
+                |> List.map (Slide.config [])
+    in
+    Carousel.config CarouselMsg [ Html.Attributes.class "carousel" ]
+        |> Carousel.withControls
+        |> Carousel.withIndicators
+        |> Carousel.slides slides
+        |> Carousel.view model.carouselState
+        >> fromUnstyled
 
 
 header : Model -> Html Msg
@@ -194,11 +244,24 @@ content_ { tab } =
 
 home : Html Msg
 home =
-    wrap "assets/portré2.jpg"
+    img
+        [ Html.Styled.Attributes.width standardWidth
+        , src "assets/portré2.jpg"
+        ]
+        []
 
 
 enteriors : Html Msg
 enteriors =
+    let
+        wrap image =
+            img
+                [ Html.Styled.Attributes.width standardWidth
+                , src image
+                , onClick EnteriorsImageClicked
+                ]
+                []
+    in
     Images.enteriorok
         |> List.map wrap
         |> div []
@@ -206,6 +269,15 @@ enteriors =
 
 moodboards : Html Msg
 moodboards =
+    let
+        wrap image =
+            img
+                [ Html.Styled.Attributes.width standardWidth
+                , src image
+                , onClick MoodboardsImageClicked
+                ]
+                []
+    in
     Images.latvanytervek
         |> List.map wrap
         |> div []
@@ -279,15 +351,6 @@ theme =
     { primary = rgb 0 0 0
     , secondary = rgb 250 240 230
     }
-
-
-wrap : String -> Html msg
-wrap image =
-    img
-        [ Html.Styled.Attributes.width standardWidth
-        , src image
-        ]
-        []
 
 
 standardWidth =
