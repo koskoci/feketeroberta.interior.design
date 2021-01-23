@@ -7803,7 +7803,6 @@ var $author$project$Main$about = A2(
 			$rtfeldman$elm_css$Html$Styled$Attributes$css(
 			_List_fromArray(
 				[
-					$rtfeldman$elm_css$Css$fontStyle($rtfeldman$elm_css$Css$italic),
 					$rtfeldman$elm_css$Css$displayFlex,
 					$rtfeldman$elm_css$Css$alignItems($rtfeldman$elm_css$Css$center),
 					$rtfeldman$elm_css$Css$height(
@@ -7834,12 +7833,13 @@ var $author$project$Main$about = A2(
 							$rtfeldman$elm_css$Css$zero,
 							$rtfeldman$elm_css$Css$px(30)),
 							$rtfeldman$elm_css$Css$lineHeight(
-							$rtfeldman$elm_css$Css$num(2.5))
+							$rtfeldman$elm_css$Css$num(2.5)),
+							$rtfeldman$elm_css$Css$fontStyle($rtfeldman$elm_css$Css$italic)
 						]))
 				]),
 			_List_fromArray(
 				[
-					$rtfeldman$elm_css$Html$Styled$text('Belső terek kialakítása magán és céges ügyfeleknek egyedi igény szerint, megtalálva a megfelelő harmóniát, stílust, funkcionalitást. Segítek összhangot teremteni.\n')
+					$rtfeldman$elm_css$Html$Styled$text('Belső terek kialakítása magán és céges ügyfeleknek, egyedi igény szerint, megtalálva a megfelelő harmóniát, stílust, funkcionalitást. Segítek összhangot teremteni.\n')
 				]))
 		]));
 var $rtfeldman$elm_css$Css$row = {flexDirection: $rtfeldman$elm_css$Css$Structure$Compatible, flexDirectionOrWrap: $rtfeldman$elm_css$Css$Structure$Compatible, value: 'row'};
@@ -7858,99 +7858,85 @@ var $rtfeldman$elm_css$Css$justifyContent = function (fn) {
 		fn($rtfeldman$elm_css$Css$Internal$lengthForOverloadedProperty));
 };
 var $rtfeldman$elm_css$Css$padding = $rtfeldman$elm_css$Css$prop1('padding');
+var $rtfeldman$elm_css$Css$paddingRight = $rtfeldman$elm_css$Css$prop1('padding-right');
 var $rtfeldman$elm_css$Css$PercentageUnits = {$: 'PercentageUnits'};
 var $rtfeldman$elm_css$Css$pct = A2($rtfeldman$elm_css$Css$Internal$lengthConverter, $rtfeldman$elm_css$Css$PercentageUnits, '%');
-var $rtfeldman$elm_css$Css$spaceBetween = $rtfeldman$elm_css$Css$prop1('space-between');
 var $rtfeldman$elm_css$Css$width = $rtfeldman$elm_css$Css$prop1('width');
-var $author$project$Main$contact = A2(
-	$rtfeldman$elm_css$Html$Styled$div,
-	_List_fromArray(
-		[
-			$rtfeldman$elm_css$Html$Styled$Attributes$css(
-			_List_fromArray(
-				[
-					$rtfeldman$elm_css$Css$displayFlex,
-					$rtfeldman$elm_css$Css$alignItems($rtfeldman$elm_css$Css$center),
-					$rtfeldman$elm_css$Css$justifyContent($rtfeldman$elm_css$Css$center),
-					$rtfeldman$elm_css$Css$height(
-					$rtfeldman$elm_css$Css$px($author$project$Main$standardHeight))
-				]))
-		]),
-	_List_fromArray(
-		[
-			A2(
-			$rtfeldman$elm_css$Html$Styled$div,
-			_List_fromArray(
-				[
-					$rtfeldman$elm_css$Html$Styled$Attributes$css(
-					_List_fromArray(
-						[
-							$rtfeldman$elm_css$Css$displayFlex,
-							$rtfeldman$elm_css$Css$flexDirection($rtfeldman$elm_css$Css$column),
-							$rtfeldman$elm_css$Css$alignItems($rtfeldman$elm_css$Css$flexStart),
-							$rtfeldman$elm_css$Css$justifyContent($rtfeldman$elm_css$Css$center),
-							$rtfeldman$elm_css$Css$height(
-							$rtfeldman$elm_css$Css$px($author$project$Main$standardHeight / 4))
-						]))
-				]),
-			_List_fromArray(
-				[
-					A2(
-					$rtfeldman$elm_css$Html$Styled$div,
-					_List_fromArray(
-						[
-							$rtfeldman$elm_css$Html$Styled$Attributes$css(
-							_List_fromArray(
-								[
-									$rtfeldman$elm_css$Css$display($rtfeldman$elm_css$Css$inlineFlex),
-									$rtfeldman$elm_css$Css$alignItems($rtfeldman$elm_css$Css$center),
-									$rtfeldman$elm_css$Css$justifyContent($rtfeldman$elm_css$Css$spaceBetween),
-									$rtfeldman$elm_css$Css$padding(
-									$rtfeldman$elm_css$Css$px(10)),
-									$rtfeldman$elm_css$Css$width(
-									$rtfeldman$elm_css$Css$pct(100))
-								]))
-						]),
-					_List_fromArray(
-						[
-							A2(
-							$rtfeldman$elm_css$Html$Styled$img,
-							_List_fromArray(
-								[
-									$rtfeldman$elm_css$Html$Styled$Attributes$src('assets/phone.svg')
-								]),
-							_List_Nil),
-							$rtfeldman$elm_css$Html$Styled$text('+36 70 338 1317')
-						])),
-					A2(
-					$rtfeldman$elm_css$Html$Styled$div,
-					_List_fromArray(
-						[
-							$rtfeldman$elm_css$Html$Styled$Attributes$css(
-							_List_fromArray(
-								[
-									$rtfeldman$elm_css$Css$display($rtfeldman$elm_css$Css$inlineFlex),
-									$rtfeldman$elm_css$Css$alignItems($rtfeldman$elm_css$Css$center),
-									$rtfeldman$elm_css$Css$justifyContent($rtfeldman$elm_css$Css$spaceBetween),
-									$rtfeldman$elm_css$Css$padding(
-									$rtfeldman$elm_css$Css$px(10)),
-									$rtfeldman$elm_css$Css$width(
-									$rtfeldman$elm_css$Css$pct(100))
-								]))
-						]),
-					_List_fromArray(
-						[
-							A2(
-							$rtfeldman$elm_css$Html$Styled$img,
-							_List_fromArray(
-								[
-									$rtfeldman$elm_css$Html$Styled$Attributes$src('assets/email.svg')
-								]),
-							_List_Nil),
-							$rtfeldman$elm_css$Html$Styled$text('fekete.roberta@gmail.com')
-						]))
-				]))
-		]));
+var $author$project$Main$contact = function () {
+	var contactItem = F2(
+		function (icon, label) {
+			return A2(
+				$rtfeldman$elm_css$Html$Styled$div,
+				_List_fromArray(
+					[
+						$rtfeldman$elm_css$Html$Styled$Attributes$css(
+						_List_fromArray(
+							[
+								$rtfeldman$elm_css$Css$display($rtfeldman$elm_css$Css$inlineFlex),
+								$rtfeldman$elm_css$Css$alignItems($rtfeldman$elm_css$Css$center),
+								$rtfeldman$elm_css$Css$justifyContent($rtfeldman$elm_css$Css$flexStart),
+								$rtfeldman$elm_css$Css$padding(
+								$rtfeldman$elm_css$Css$px(20)),
+								$rtfeldman$elm_css$Css$width(
+								$rtfeldman$elm_css$Css$pct(100))
+							]))
+					]),
+				_List_fromArray(
+					[
+						A2(
+						$rtfeldman$elm_css$Html$Styled$img,
+						_List_fromArray(
+							[
+								$rtfeldman$elm_css$Html$Styled$Attributes$src(icon),
+								$rtfeldman$elm_css$Html$Styled$Attributes$css(
+								_List_fromArray(
+									[
+										$rtfeldman$elm_css$Css$paddingRight(
+										$rtfeldman$elm_css$Css$px(40))
+									]))
+							]),
+						_List_Nil),
+						$rtfeldman$elm_css$Html$Styled$text(label)
+					]));
+		});
+	return A2(
+		$rtfeldman$elm_css$Html$Styled$div,
+		_List_fromArray(
+			[
+				$rtfeldman$elm_css$Html$Styled$Attributes$css(
+				_List_fromArray(
+					[
+						$rtfeldman$elm_css$Css$displayFlex,
+						$rtfeldman$elm_css$Css$alignItems($rtfeldman$elm_css$Css$center),
+						$rtfeldman$elm_css$Css$justifyContent($rtfeldman$elm_css$Css$center),
+						$rtfeldman$elm_css$Css$height(
+						$rtfeldman$elm_css$Css$px($author$project$Main$standardHeight))
+					]))
+			]),
+		_List_fromArray(
+			[
+				A2(
+				$rtfeldman$elm_css$Html$Styled$div,
+				_List_fromArray(
+					[
+						$rtfeldman$elm_css$Html$Styled$Attributes$css(
+						_List_fromArray(
+							[
+								$rtfeldman$elm_css$Css$displayFlex,
+								$rtfeldman$elm_css$Css$flexDirection($rtfeldman$elm_css$Css$column),
+								$rtfeldman$elm_css$Css$alignItems($rtfeldman$elm_css$Css$flexStart),
+								$rtfeldman$elm_css$Css$justifyContent($rtfeldman$elm_css$Css$center),
+								$rtfeldman$elm_css$Css$height(
+								$rtfeldman$elm_css$Css$px($author$project$Main$standardHeight / 4))
+							]))
+					]),
+				_List_fromArray(
+					[
+						A2(contactItem, 'assets/phone.svg', '+36 70 338 1317'),
+						A2(contactItem, 'assets/email.svg', 'fekete.roberta@gmail.com')
+					]))
+			]));
+}();
 var $author$project$Images$enteriorok = _List_fromArray(
 	['./assets/enteriorok/_2 PIX7973.jpg', './assets/enteriorok/S 12621948_959632030758276_4427596913601600779_o.jpg', './assets/enteriorok/_20 PIX7823.jpg', './assets/enteriorok/_11 PIX7919.jpg', './assets/enteriorok/IMG_1513_edited.jpg', './assets/enteriorok/IMG_1407_edited.jpg', './assets/enteriorok/_PIX2776-HDR.jpg', './assets/enteriorok/Roberta-lakas-brody-40m.jpg', './assets/enteriorok/Roberta-lakas-brody-59.jpg', './assets/enteriorok/_19 PIX7778.jpg', './assets/enteriorok/Roberta-lakas-brody-20m.jpg', './assets/enteriorok/_PIX2615.jpg', './assets/enteriorok/IMG_1402_edited.jpg', './assets/enteriorok/_25 PIX7599.jpg', './assets/enteriorok/S 12514026_959631974091615_7905761173753907936_o.jpg', './assets/enteriorok/_PIX2673.jpg', './assets/enteriorok/_18 PIX7818.jpg', './assets/enteriorok/S 12525205_959631850758294_4979434988918525002_o.jpg', './assets/enteriorok/IMG_1450_edited.jpg', './assets/enteriorok/_24 PIX7625.jpg', './assets/enteriorok/Roberta-lakas-brody-11.jpg', './assets/enteriorok/_PIX2666.jpg', './assets/enteriorok/_PIX2300.jpg', './assets/enteriorok/IMG_1495_edited.jpg', './assets/enteriorok/Roberta-lakas-brody-13.jpg', './assets/enteriorok/Roberta-lakas-brody-12.jpg', './assets/enteriorok/IMG_1441_edited.jpg', './assets/enteriorok/IMG_1476_edited.jpg', './assets/enteriorok/_3 PIX7983.jpg', './assets/enteriorok/_4 PIX7964.jpg', './assets/enteriorok/_PIX2498.jpg', './assets/enteriorok/_PIX2301.jpg', './assets/enteriorok/IMG_1489_edited.jpg', './assets/enteriorok/Roberta-lakas-brody-26m.jpg', './assets/enteriorok/_PIX2477.jpg', './assets/enteriorok/_PIX2339.jpg', './assets/enteriorok/_PIX2503.jpg', './assets/enteriorok/_15 PIX7719.jpg', './assets/enteriorok/_PIX2700.jpg', './assets/enteriorok/IMG_1501_edited_true-color.jpg', './assets/enteriorok/_12 PIX8009.jpg', './assets/enteriorok/_PIX2272.jpg', './assets/enteriorok/_16 PIX7813.jpg', './assets/enteriorok/_PIX2652.jpg', './assets/enteriorok/_PIX2691.jpg', './assets/enteriorok/_PIX2450.jpg', './assets/enteriorok/_10 PIX7855.jpg', './assets/enteriorok/_23 PIX7580.jpg', './assets/enteriorok/S 12615435_959631860758293_2649593505118818303_o.jpg', './assets/enteriorok/Roberta-lakas-brody-25m.jpg', './assets/enteriorok/_PIX2645.jpg', './assets/enteriorok/_21 PIX7830.jpg', './assets/enteriorok/_PIX2697.jpg', './assets/enteriorok/_PIX2324.jpg', './assets/enteriorok/_PIX2709.jpg', './assets/enteriorok/_PIX2721.jpg', './assets/enteriorok/IMG_1464_edited.jpg', './assets/enteriorok/_1 PIX7986.jpg', './assets/enteriorok/_PIX2657.jpg', './assets/enteriorok/Roberta-lakas-brody-53m.jpg', './assets/enteriorok/_9 PIX7889.jpg', './assets/enteriorok/_PIX2534.jpg', './assets/enteriorok/_17 PIX7768.jpg', './assets/enteriorok/_PIX2369.jpg', './assets/enteriorok/_PIX2396.jpg', './assets/enteriorok/Roberta-lakas-brody-52.jpg', './assets/enteriorok/Roberta-lakas-brody-46.jpg', './assets/enteriorok/IMG_1427_edited.jpg', './assets/enteriorok/S 12513878_959631854091627_522075481368800160_o.jpg', './assets/enteriorok/_PIX2354.jpg', './assets/enteriorok/_5 PIX7988.jpg', './assets/enteriorok/_6 PIX7912.jpg', './assets/enteriorok/_14 PIX7682.jpg', './assets/enteriorok/Roberta-lakas-brody-25m2.jpg', './assets/enteriorok/S 12593487_959631954091617_6014730192592584657_o.jpg', './assets/enteriorok/_13 PIX7664.jpg', './assets/enteriorok/_8 PIX7925.jpg', './assets/enteriorok/_22 PIX7614.jpg', './assets/enteriorok/_7 PIX7952.jpg', './assets/enteriorok/Roberta-lakas-brody-42.jpg']);
 var $author$project$Main$wrap = function (image) {
@@ -7988,6 +7974,7 @@ var $author$project$Main$content_ = function (model) {
 			return $author$project$Main$contact;
 	}
 };
+var $rtfeldman$elm_css$Css$fontSize = $rtfeldman$elm_css$Css$prop1('font-size');
 var $rtfeldman$elm_css$Css$minHeight = $rtfeldman$elm_css$Css$prop1('min-height');
 var $author$project$Main$content = function (model) {
 	return A2(
@@ -7999,40 +7986,14 @@ var $author$project$Main$content = function (model) {
 					[
 						$rtfeldman$elm_css$Css$minHeight(
 						$rtfeldman$elm_css$Css$px(500)),
-						$rtfeldman$elm_css$Css$fontStyle($rtfeldman$elm_css$Css$italic)
+						$rtfeldman$elm_css$Css$fontSize(
+						$rtfeldman$elm_css$Css$px(20))
 					]))
 			]),
 		_List_fromArray(
 			[
 				$author$project$Main$content_(model)
 			]));
-};
-var $rtfeldman$elm_css$Css$margin = $rtfeldman$elm_css$Css$prop1('margin');
-var $rtfeldman$elm_css$Css$cssFunction = F2(
-	function (funcName, args) {
-		return funcName + ('(' + (A2($elm$core$String$join, ', ', args) + ')'));
-	});
-var $rtfeldman$elm_css$Css$rgb = F3(
-	function (r, g, b) {
-		return {
-			alpha: 1,
-			blue: b,
-			color: $rtfeldman$elm_css$Css$Structure$Compatible,
-			green: g,
-			red: r,
-			value: A2(
-				$rtfeldman$elm_css$Css$cssFunction,
-				'rgb',
-				A2(
-					$elm$core$List$map,
-					$elm$core$String$fromInt,
-					_List_fromArray(
-						[r, g, b])))
-		};
-	});
-var $author$project$Main$theme = {
-	primary: A3($rtfeldman$elm_css$Css$rgb, 0, 0, 0),
-	secondary: A3($rtfeldman$elm_css$Css$rgb, 250, 240, 230)
 };
 var $rtfeldman$elm_css$Html$Styled$footer = $rtfeldman$elm_css$Html$Styled$node('footer');
 var $rtfeldman$elm_css$Css$prop3 = F4(
@@ -8047,7 +8008,7 @@ var $rtfeldman$elm_css$Css$prop3 = F4(
 					[argA.value, argB.value, argC.value])));
 	});
 var $rtfeldman$elm_css$Css$padding3 = $rtfeldman$elm_css$Css$prop3('padding');
-var $author$project$Main$viewFooter = A2(
+var $author$project$Main$footer = A2(
 	$rtfeldman$elm_css$Html$Styled$div,
 	_List_fromArray(
 		[
@@ -8088,7 +8049,6 @@ var $rtfeldman$elm_css$Css$Transitions$Ease = {$: 'Ease'};
 var $rtfeldman$elm_css$Css$Transitions$ease = $rtfeldman$elm_css$Css$Transitions$Ease;
 var $rtfeldman$elm_css$Css$flexEnd = $rtfeldman$elm_css$Css$prop1('flex-end');
 var $rtfeldman$elm_css$Css$flexGrow = $rtfeldman$elm_css$Css$prop1('flex-grow');
-var $rtfeldman$elm_css$Css$fontSize = $rtfeldman$elm_css$Css$prop1('font-size');
 var $rtfeldman$elm_css$Css$Preprocess$ExtendSelector = F2(
 	function (a, b) {
 		return {$: 'ExtendSelector', a: a, b: b};
@@ -8129,6 +8089,7 @@ var $rtfeldman$elm_css$Html$Styled$Events$onClick = function (msg) {
 };
 var $rtfeldman$elm_css$Css$position = $rtfeldman$elm_css$Css$prop1('position');
 var $rtfeldman$elm_css$Css$relative = {position: $rtfeldman$elm_css$Css$Structure$Compatible, value: 'relative'};
+var $rtfeldman$elm_css$Css$spaceBetween = $rtfeldman$elm_css$Css$prop1('space-between');
 var $rtfeldman$elm_css$Css$top = $rtfeldman$elm_css$Css$prop1('top');
 var $rtfeldman$elm_css$Css$Transitions$Top = {$: 'Top'};
 var $rtfeldman$elm_css$Css$Transitions$Transition = function (a) {
@@ -8402,7 +8363,7 @@ var $rtfeldman$elm_css$Css$Transitions$transition = function (options) {
 			options));
 	return A2($rtfeldman$elm_css$Css$property, 'transition', v);
 };
-var $author$project$Main$viewHeader = function (model) {
+var $author$project$Main$header = function (model) {
 	var logo = A2(
 		$rtfeldman$elm_css$Html$Styled$img,
 		_List_fromArray(
@@ -8436,6 +8397,26 @@ var $author$project$Main$viewHeader = function (model) {
 						A3($rtfeldman$elm_css$Css$Transitions$top3, 200, 20, $rtfeldman$elm_css$Css$Transitions$ease)
 					]))
 			]));
+	var headerItem = F2(
+		function (msg, label) {
+			return A2(
+				$rtfeldman$elm_css$Html$Styled$div,
+				_List_fromArray(
+					[
+						$rtfeldman$elm_css$Html$Styled$Events$onClick(msg),
+						jumpOnHover,
+						$rtfeldman$elm_css$Html$Styled$Attributes$css(
+						_List_fromArray(
+							[
+								$rtfeldman$elm_css$Css$flexGrow(
+								$rtfeldman$elm_css$Css$num(1))
+							]))
+					]),
+				_List_fromArray(
+					[
+						$rtfeldman$elm_css$Html$Styled$text(label)
+					]));
+		});
 	return A2(
 		$rtfeldman$elm_css$Html$Styled$div,
 		_List_fromArray(
@@ -8458,92 +8439,39 @@ var $author$project$Main$viewHeader = function (model) {
 		_List_fromArray(
 			[
 				logo,
-				A2(
-				$rtfeldman$elm_css$Html$Styled$div,
-				_List_fromArray(
-					[
-						$rtfeldman$elm_css$Html$Styled$Events$onClick($author$project$Main$HomeClicked),
-						jumpOnHover,
-						$rtfeldman$elm_css$Html$Styled$Attributes$css(
-						_List_fromArray(
-							[
-								$rtfeldman$elm_css$Css$flexGrow(
-								$rtfeldman$elm_css$Css$num(1))
-							]))
-					]),
-				_List_fromArray(
-					[
-						$rtfeldman$elm_css$Html$Styled$text('| Fekete Roberta belsőépítész')
-					])),
-				A2(
-				$rtfeldman$elm_css$Html$Styled$div,
-				_List_fromArray(
-					[
-						$rtfeldman$elm_css$Html$Styled$Events$onClick($author$project$Main$EnteriorsClicked),
-						jumpOnHover,
-						$rtfeldman$elm_css$Html$Styled$Attributes$css(
-						_List_fromArray(
-							[
-								$rtfeldman$elm_css$Css$flexGrow(
-								$rtfeldman$elm_css$Css$num(1))
-							]))
-					]),
-				_List_fromArray(
-					[
-						$rtfeldman$elm_css$Html$Styled$text(' | Enteriőr')
-					])),
-				A2(
-				$rtfeldman$elm_css$Html$Styled$div,
-				_List_fromArray(
-					[
-						$rtfeldman$elm_css$Html$Styled$Events$onClick($author$project$Main$MoodboardsClicked),
-						jumpOnHover,
-						$rtfeldman$elm_css$Html$Styled$Attributes$css(
-						_List_fromArray(
-							[
-								$rtfeldman$elm_css$Css$flexGrow(
-								$rtfeldman$elm_css$Css$num(1))
-							]))
-					]),
-				_List_fromArray(
-					[
-						$rtfeldman$elm_css$Html$Styled$text(' | Látványterv')
-					])),
-				A2(
-				$rtfeldman$elm_css$Html$Styled$div,
-				_List_fromArray(
-					[
-						$rtfeldman$elm_css$Html$Styled$Events$onClick($author$project$Main$AboutClicked),
-						jumpOnHover,
-						$rtfeldman$elm_css$Html$Styled$Attributes$css(
-						_List_fromArray(
-							[
-								$rtfeldman$elm_css$Css$flexGrow(
-								$rtfeldman$elm_css$Css$num(1))
-							]))
-					]),
-				_List_fromArray(
-					[
-						$rtfeldman$elm_css$Html$Styled$text(' | Rólam')
-					])),
-				A2(
-				$rtfeldman$elm_css$Html$Styled$div,
-				_List_fromArray(
-					[
-						$rtfeldman$elm_css$Html$Styled$Events$onClick($author$project$Main$ContactClicked),
-						jumpOnHover,
-						$rtfeldman$elm_css$Html$Styled$Attributes$css(
-						_List_fromArray(
-							[
-								$rtfeldman$elm_css$Css$flexGrow(
-								$rtfeldman$elm_css$Css$num(1))
-							]))
-					]),
-				_List_fromArray(
-					[
-						$rtfeldman$elm_css$Html$Styled$text(' | Elérhetőség')
-					]))
+				A2(headerItem, $author$project$Main$HomeClicked, '| Fekete Roberta lakberendező'),
+				A2(headerItem, $author$project$Main$EnteriorsClicked, ' | Enteriőr'),
+				A2(headerItem, $author$project$Main$MoodboardsClicked, ' | Látványterv'),
+				A2(headerItem, $author$project$Main$AboutClicked, ' | Rólam'),
+				A2(headerItem, $author$project$Main$ContactClicked, ' | Elérhetőség')
 			]));
+};
+var $rtfeldman$elm_css$Css$margin = $rtfeldman$elm_css$Css$prop1('margin');
+var $rtfeldman$elm_css$Css$cssFunction = F2(
+	function (funcName, args) {
+		return funcName + ('(' + (A2($elm$core$String$join, ', ', args) + ')'));
+	});
+var $rtfeldman$elm_css$Css$rgb = F3(
+	function (r, g, b) {
+		return {
+			alpha: 1,
+			blue: b,
+			color: $rtfeldman$elm_css$Css$Structure$Compatible,
+			green: g,
+			red: r,
+			value: A2(
+				$rtfeldman$elm_css$Css$cssFunction,
+				'rgb',
+				A2(
+					$elm$core$List$map,
+					$elm$core$String$fromInt,
+					_List_fromArray(
+						[r, g, b])))
+		};
+	});
+var $author$project$Main$theme = {
+	primary: A3($rtfeldman$elm_css$Css$rgb, 0, 0, 0),
+	secondary: A3($rtfeldman$elm_css$Css$rgb, 250, 240, 230)
 };
 var $author$project$Main$view = function (model) {
 	return A2(
@@ -8574,12 +8502,12 @@ var $author$project$Main$view = function (model) {
 					]),
 				A2(
 					$elm$core$List$cons,
-					$author$project$Main$viewHeader(model),
+					$author$project$Main$header(model),
 					A2(
 						$elm$core$List$cons,
 						$author$project$Main$content(model),
 						_List_fromArray(
-							[$author$project$Main$viewFooter]))))
+							[$author$project$Main$footer]))))
 			]));
 };
 var $author$project$Main$main = $elm$browser$Browser$sandbox(

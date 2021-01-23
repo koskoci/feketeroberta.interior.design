@@ -3,7 +3,7 @@ module Main exposing (..)
 import Browser
 import Css exposing (..)
 import Css.Transitions exposing (transition)
-import Html.Styled exposing (Html, a, div, footer, img, li, text, toUnstyled, ul)
+import Html.Styled exposing (Html, a, div, img, li, text, toUnstyled, ul)
 import Html.Styled.Attributes exposing (css, src)
 import Html.Styled.Events exposing (onClick)
 import Images
@@ -64,12 +64,12 @@ view model =
         ]
         [ div
             [ css [ width (pct 100) ] ]
-            (viewHeader model :: content model :: [ viewFooter ])
+            (header model :: content model :: [ footer ])
         ]
 
 
-viewHeader : Model -> Html Msg
-viewHeader model =
+header : Model -> Html Msg
+header model =
     let
         jumpOnHover =
             css
@@ -92,6 +92,16 @@ viewHeader model =
                     ]
                 ]
                 []
+
+        headerItem msg label =
+            div
+                [ onClick msg
+                , jumpOnHover
+                , css
+                    [ flexGrow (num 1)
+                    ]
+                ]
+                [ text label ]
     in
     div
         [ css
@@ -103,54 +113,23 @@ viewHeader model =
             ]
         ]
         [ logo
-        , div
-            [ onClick HomeClicked
-            , jumpOnHover
-            , css
-                [ flexGrow (num 1)
-                ]
-            ]
-            [ text "| Fekete Roberta belsőépítész" ]
-        , div
-            [ onClick EnteriorsClicked
-            , jumpOnHover
-            , css
-                [ flexGrow (num 1) ]
-            ]
-            [ text " | Enteriőr" ]
-        , div
-            [ onClick MoodboardsClicked
-            , jumpOnHover
-            , css
-                [ flexGrow (num 1) ]
-            ]
-            [ text " | Látványterv" ]
-        , div
-            [ onClick AboutClicked
-            , jumpOnHover
-            , css
-                [ flexGrow (num 1) ]
-            ]
-            [ text " | Rólam" ]
-        , div
-            [ onClick ContactClicked
-            , jumpOnHover
-            , css
-                [ flexGrow (num 1) ]
-            ]
-            [ text " | Elérhetőség" ]
+        , headerItem HomeClicked "| Fekete Roberta lakberendező"
+        , headerItem EnteriorsClicked " | Enteriőr"
+        , headerItem MoodboardsClicked " | Látványterv"
+        , headerItem AboutClicked " | Rólam"
+        , headerItem ContactClicked " | Elérhetőség"
         ]
 
 
-viewFooter : Html msg
-viewFooter =
+footer : Html msg
+footer =
     div
         [ css
             [ displayFlex
             , justifyContent center
             ]
         ]
-        [ footer
+        [ Html.Styled.footer
             [ css
                 [ padding3 (px 40) zero (px 20) ]
             ]
@@ -163,7 +142,7 @@ content model =
     div
         [ css
             [ minHeight (px 500)
-            , fontStyle italic
+            , fontSize (px 20)
             ]
         ]
         [ content_ model ]
@@ -211,8 +190,7 @@ about : Html Msg
 about =
     div
         [ css
-            [ fontStyle italic
-            , displayFlex
+            [ displayFlex
             , alignItems center
             , height (px standardHeight)
             ]
@@ -226,14 +204,28 @@ about =
             [ css
                 [ padding4 zero zero zero (px 30)
                 , lineHeight (num 2.5)
+                , fontStyle italic
                 ]
             ]
-            [ text "Belső terek kialakítása magán és céges ügyfeleknek egyedi igény szerint, megtalálva a megfelelő harmóniát, stílust, funkcionalitást. Segítek összhangot teremteni.\n" ]
+            [ text "Belső terek kialakítása magán és céges ügyfeleknek, egyedi igény szerint, megtalálva a megfelelő harmóniát, stílust, funkcionalitást. Segítek összhangot teremteni.\n" ]
         ]
 
 
 contact : Html Msg
 contact =
+    let
+        contactItem icon label =
+            div
+                [ css
+                    [ display inlineFlex
+                    , alignItems center
+                    , justifyContent flexStart
+                    , padding (px 20)
+                    , width (pct 100)
+                    ]
+                ]
+                [ img [ src icon, css [ paddingRight (px 40) ] ] [], text label ]
+    in
     div
         [ css
             [ displayFlex
@@ -251,26 +243,8 @@ contact =
                 , height (px (standardHeight / 4))
                 ]
             ]
-            [ div
-                [ css
-                    [ display inlineFlex
-                    , alignItems center
-                    , justifyContent spaceBetween
-                    , padding (px 10)
-                    , width (pct 100)
-                    ]
-                ]
-                [ img [ src "assets/phone.svg" ] [], text "+36 70 338 1317" ]
-            , div
-                [ css
-                    [ display inlineFlex
-                    , alignItems center
-                    , justifyContent spaceBetween
-                    , padding (px 10)
-                    , width (pct 100)
-                    ]
-                ]
-                [ img [ src "assets/email.svg" ] [], text "fekete.roberta@gmail.com" ]
+            [ contactItem "assets/phone.svg" "+36 70 338 1317"
+            , contactItem "assets/email.svg" "fekete.roberta@gmail.com"
             ]
         ]
 
