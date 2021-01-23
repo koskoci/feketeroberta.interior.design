@@ -13,7 +13,11 @@ main =
     Browser.sandbox { init = init, update = update, view = view >> toUnstyled }
 
 
-type Model
+type alias Model =
+    { tab : Tab }
+
+
+type Tab
     = Home
     | Enteriors
     | Moodboards
@@ -23,7 +27,7 @@ type Model
 
 init : Model
 init =
-    Home
+    { tab = Home }
 
 
 type Msg
@@ -35,22 +39,22 @@ type Msg
 
 
 update : Msg -> Model -> Model
-update msg _ =
+update msg model =
     case msg of
         HomeClicked ->
-            Home
+            { model | tab = Home }
 
         EnteriorsClicked ->
-            Enteriors
+            { model | tab = Enteriors }
 
         MoodboardsClicked ->
-            Moodboards
+            { model | tab = Moodboards }
 
         AboutClicked ->
-            About
+            { model | tab = About }
 
         ContactClicked ->
-            Contact
+            { model | tab = Contact }
 
 
 view : Model -> Html Msg
@@ -149,8 +153,8 @@ content model =
 
 
 content_ : Model -> Html Msg
-content_ model =
-    case model of
+content_ { tab } =
+    case tab of
         Home ->
             home
 
