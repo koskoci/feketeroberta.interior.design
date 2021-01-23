@@ -174,15 +174,18 @@ header model =
                 , jumpOnHover
                 , css
                     [ flexGrow (num 1)
+                    , displayFlex
+                    , alignItems flexEnd
                     ]
                 ]
-                [ text label ]
+                [ div [] [ text label ] ]
     in
     div
         [ css
             [ displayFlex
+            , flexDirection row
             , justifyContent spaceBetween
-            , alignItems flexEnd
+            , alignItems stretch
             , fontSize (px 24)
             , padding3 (px 40) zero (px 20)
             ]
@@ -299,9 +302,10 @@ about =
             []
         , div
             [ css
-                [ padding4 zero zero zero (px 30)
-                , lineHeight (num 2.5)
+                [ padding4 zero (px 50) zero (px 30)
+                , lineHeight (num 1.5)
                 , fontStyle italic
+                , textAlign justify
                 ]
             ]
             [ text "Belső terek kialakítása magán és céges ügyfeleknek, egyedi igény szerint, megtalálva a megfelelő harmóniát, stílust, funkcionalitást. Segítek összhangot teremteni.\n" ]

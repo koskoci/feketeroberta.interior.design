@@ -5281,7 +5281,7 @@ var $rundis$elm_bootstrap$Bootstrap$Carousel$initialStateWithOptions = function 
 		});
 };
 var $rundis$elm_bootstrap$Bootstrap$Carousel$initialState = $rundis$elm_bootstrap$Bootstrap$Carousel$initialStateWithOptions($rundis$elm_bootstrap$Bootstrap$Carousel$defaultStateOptions);
-var $author$project$Main$initialModel = {carouselState: $rundis$elm_bootstrap$Bootstrap$Carousel$initialState, tab: $author$project$Main$Home};
+var $author$project$Main$initialModel = {carouselState: $rundis$elm_bootstrap$Bootstrap$Carousel$initialState, carouselVisible: $elm$core$Maybe$Nothing, tab: $author$project$Main$Home};
 var $rundis$elm_bootstrap$Bootstrap$Carousel$Hovered = {$: 'Hovered'};
 var $rundis$elm_bootstrap$Bootstrap$Carousel$Next = {$: 'Next'};
 var $rundis$elm_bootstrap$Bootstrap$Carousel$SetAnimating = {$: 'SetAnimating'};
@@ -8213,6 +8213,20 @@ var $author$project$Main$update = F2(
 					_Utils_update(
 						model,
 						{tab: $author$project$Main$Contact}));
+			case 'EnteriorsImageClicked':
+				return $author$project$Main$cmdNone(
+					_Utils_update(
+						model,
+						{
+							carouselVisible: $elm$core$Maybe$Just($author$project$Main$Enteriors)
+						}));
+			case 'MoodboardsImageClicked':
+				return $author$project$Main$cmdNone(
+					_Utils_update(
+						model,
+						{
+							carouselVisible: $elm$core$Maybe$Just($author$project$Main$Moodboards)
+						}));
 			default:
 				var subMsg = msg.a;
 				return $author$project$Main$cmdNone(
@@ -8222,6 +8236,552 @@ var $author$project$Main$update = F2(
 							carouselState: A2($rundis$elm_bootstrap$Bootstrap$Carousel$update, subMsg, model.carouselState)
 						}));
 		}
+	});
+var $rtfeldman$elm_css$VirtualDom$Styled$Attribute = F3(
+	function (a, b, c) {
+		return {$: 'Attribute', a: a, b: b, c: c};
+	});
+var $elm$virtual_dom$VirtualDom$property = F2(
+	function (key, value) {
+		return A2(
+			_VirtualDom_property,
+			_VirtualDom_noInnerHtmlOrFormAction(key),
+			_VirtualDom_noJavaScriptOrHtmlUri(value));
+	});
+var $rtfeldman$elm_css$VirtualDom$Styled$property = F2(
+	function (key, value) {
+		return A3(
+			$rtfeldman$elm_css$VirtualDom$Styled$Attribute,
+			A2($elm$virtual_dom$VirtualDom$property, key, value),
+			_List_Nil,
+			'');
+	});
+var $elm$json$Json$Encode$string = _Json_wrap;
+var $rtfeldman$elm_css$Html$Styled$Attributes$stringProperty = F2(
+	function (key, string) {
+		return A2(
+			$rtfeldman$elm_css$VirtualDom$Styled$property,
+			key,
+			$elm$json$Json$Encode$string(string));
+	});
+var $rtfeldman$elm_css$Html$Styled$Attributes$class = $rtfeldman$elm_css$Html$Styled$Attributes$stringProperty('className');
+var $rtfeldman$elm_css$VirtualDom$Styled$Node = F3(
+	function (a, b, c) {
+		return {$: 'Node', a: a, b: b, c: c};
+	});
+var $rtfeldman$elm_css$VirtualDom$Styled$node = $rtfeldman$elm_css$VirtualDom$Styled$Node;
+var $rtfeldman$elm_css$Html$Styled$node = $rtfeldman$elm_css$VirtualDom$Styled$node;
+var $rtfeldman$elm_css$Html$Styled$div = $rtfeldman$elm_css$Html$Styled$node('div');
+var $elm$html$Html$Attributes$stringProperty = F2(
+	function (key, string) {
+		return A2(
+			_VirtualDom_property,
+			key,
+			$elm$json$Json$Encode$string(string));
+	});
+var $elm$html$Html$Attributes$class = $elm$html$Html$Attributes$stringProperty('className');
+var $rundis$elm_bootstrap$Bootstrap$Carousel$Config = function (a) {
+	return {$: 'Config', a: a};
+};
+var $rundis$elm_bootstrap$Bootstrap$Carousel$config = F2(
+	function (toMsg, attributes) {
+		return $rundis$elm_bootstrap$Bootstrap$Carousel$Config(
+			{attributes: attributes, controls: false, indicators: false, slides: _List_Nil, toMsg: toMsg});
+	});
+var $rundis$elm_bootstrap$Bootstrap$Carousel$SlideInternal$Config = function (a) {
+	return {$: 'Config', a: a};
+};
+var $rundis$elm_bootstrap$Bootstrap$Carousel$Slide$config = F2(
+	function (attributes, content) {
+		return $rundis$elm_bootstrap$Bootstrap$Carousel$SlideInternal$Config(
+			{attributes: attributes, caption: $elm$core$Maybe$Nothing, content: content});
+	});
+var $author$project$Images$enteriorok = _List_fromArray(
+	['./assets/enteriorok/_2 PIX7973.jpg', './assets/enteriorok/S 12621948_959632030758276_4427596913601600779_o.jpg', './assets/enteriorok/_20 PIX7823.jpg', './assets/enteriorok/_11 PIX7919.jpg', './assets/enteriorok/IMG_1513_edited.jpg', './assets/enteriorok/IMG_1407_edited.jpg', './assets/enteriorok/_PIX2776-HDR.jpg', './assets/enteriorok/Roberta-lakas-brody-40m.jpg', './assets/enteriorok/Roberta-lakas-brody-59.jpg', './assets/enteriorok/_19 PIX7778.jpg', './assets/enteriorok/Roberta-lakas-brody-20m.jpg', './assets/enteriorok/_PIX2615.jpg', './assets/enteriorok/IMG_1402_edited.jpg', './assets/enteriorok/_25 PIX7599.jpg', './assets/enteriorok/S 12514026_959631974091615_7905761173753907936_o.jpg', './assets/enteriorok/_PIX2673.jpg', './assets/enteriorok/_18 PIX7818.jpg', './assets/enteriorok/S 12525205_959631850758294_4979434988918525002_o.jpg', './assets/enteriorok/IMG_1450_edited.jpg', './assets/enteriorok/_24 PIX7625.jpg', './assets/enteriorok/Roberta-lakas-brody-11.jpg', './assets/enteriorok/_PIX2666.jpg', './assets/enteriorok/_PIX2300.jpg', './assets/enteriorok/IMG_1495_edited.jpg', './assets/enteriorok/Roberta-lakas-brody-13.jpg', './assets/enteriorok/Roberta-lakas-brody-12.jpg', './assets/enteriorok/IMG_1441_edited.jpg', './assets/enteriorok/IMG_1476_edited.jpg', './assets/enteriorok/_3 PIX7983.jpg', './assets/enteriorok/_4 PIX7964.jpg', './assets/enteriorok/_PIX2498.jpg', './assets/enteriorok/_PIX2301.jpg', './assets/enteriorok/IMG_1489_edited.jpg', './assets/enteriorok/Roberta-lakas-brody-26m.jpg', './assets/enteriorok/_PIX2477.jpg', './assets/enteriorok/_PIX2339.jpg', './assets/enteriorok/_PIX2503.jpg', './assets/enteriorok/_15 PIX7719.jpg', './assets/enteriorok/_PIX2700.jpg', './assets/enteriorok/IMG_1501_edited_true-color.jpg', './assets/enteriorok/_12 PIX8009.jpg', './assets/enteriorok/_PIX2272.jpg', './assets/enteriorok/_16 PIX7813.jpg', './assets/enteriorok/_PIX2652.jpg', './assets/enteriorok/_PIX2691.jpg', './assets/enteriorok/_PIX2450.jpg', './assets/enteriorok/_10 PIX7855.jpg', './assets/enteriorok/_23 PIX7580.jpg', './assets/enteriorok/S 12615435_959631860758293_2649593505118818303_o.jpg', './assets/enteriorok/Roberta-lakas-brody-25m.jpg', './assets/enteriorok/_PIX2645.jpg', './assets/enteriorok/_21 PIX7830.jpg', './assets/enteriorok/_PIX2697.jpg', './assets/enteriorok/_PIX2324.jpg', './assets/enteriorok/_PIX2709.jpg', './assets/enteriorok/_PIX2721.jpg', './assets/enteriorok/IMG_1464_edited.jpg', './assets/enteriorok/_1 PIX7986.jpg', './assets/enteriorok/_PIX2657.jpg', './assets/enteriorok/Roberta-lakas-brody-53m.jpg', './assets/enteriorok/_9 PIX7889.jpg', './assets/enteriorok/_PIX2534.jpg', './assets/enteriorok/_17 PIX7768.jpg', './assets/enteriorok/_PIX2369.jpg', './assets/enteriorok/_PIX2396.jpg', './assets/enteriorok/Roberta-lakas-brody-52.jpg', './assets/enteriorok/Roberta-lakas-brody-46.jpg', './assets/enteriorok/IMG_1427_edited.jpg', './assets/enteriorok/S 12513878_959631854091627_522075481368800160_o.jpg', './assets/enteriorok/_PIX2354.jpg', './assets/enteriorok/_5 PIX7988.jpg', './assets/enteriorok/_6 PIX7912.jpg', './assets/enteriorok/_14 PIX7682.jpg', './assets/enteriorok/Roberta-lakas-brody-25m2.jpg', './assets/enteriorok/S 12593487_959631954091617_6014730192592584657_o.jpg', './assets/enteriorok/_13 PIX7664.jpg', './assets/enteriorok/_8 PIX7925.jpg', './assets/enteriorok/_22 PIX7614.jpg', './assets/enteriorok/_7 PIX7952.jpg', './assets/enteriorok/Roberta-lakas-brody-42.jpg']);
+var $rtfeldman$elm_css$VirtualDom$Styled$Unstyled = function (a) {
+	return {$: 'Unstyled', a: a};
+};
+var $rtfeldman$elm_css$VirtualDom$Styled$unstyledNode = $rtfeldman$elm_css$VirtualDom$Styled$Unstyled;
+var $rtfeldman$elm_css$Html$Styled$fromUnstyled = $rtfeldman$elm_css$VirtualDom$Styled$unstyledNode;
+var $rundis$elm_bootstrap$Bootstrap$Carousel$SlideInternal$Image = function (a) {
+	return {$: 'Image', a: a};
+};
+var $rundis$elm_bootstrap$Bootstrap$Carousel$Slide$image = F2(
+	function (attributes, src) {
+		return $rundis$elm_bootstrap$Bootstrap$Carousel$SlideInternal$Image(
+			{attributes: attributes, src: src});
+	});
+var $author$project$Images$latvanytervek = _List_fromArray(
+	['./assets/latvanytervek/08 kishalo.jpg', './assets/latvanytervek/04 nappali.jpg', './assets/latvanytervek/01 konyha.jpg', './assets/latvanytervek/05 nagyhalojpg.jpg', './assets/latvanytervek/02 nappali.jpg', './assets/latvanytervek/03 konyha.jpg', './assets/latvanytervek/05 nappali.jpg', './assets/latvanytervek/09 kishalo.jpg', './assets/latvanytervek/06 nagyhalo.jpg', './assets/latvanytervek/03 nappali.jpg', './assets/latvanytervek/02 konyha.jpg', './assets/latvanytervek/07 nagyhalo.jpg', './assets/latvanytervek/01 előszoba.jpg', './assets/latvanytervek/06 nappali.jpg']);
+var $rundis$elm_bootstrap$Bootstrap$Carousel$slides = F2(
+	function (newSlides, _v0) {
+		var settings = _v0.a;
+		return $rundis$elm_bootstrap$Bootstrap$Carousel$Config(
+			_Utils_update(
+				settings,
+				{slides: newSlides}));
+	});
+var $rundis$elm_bootstrap$Bootstrap$Carousel$EndTransition = function (a) {
+	return {$: 'EndTransition', a: a};
+};
+var $rundis$elm_bootstrap$Bootstrap$Carousel$SetHover = function (a) {
+	return {$: 'SetHover', a: a};
+};
+var $elm$virtual_dom$VirtualDom$attribute = F2(
+	function (key, value) {
+		return A2(
+			_VirtualDom_attribute,
+			_VirtualDom_noOnOrFormAction(key),
+			_VirtualDom_noJavaScriptOrHtmlUri(value));
+	});
+var $elm$html$Html$Attributes$attribute = $elm$virtual_dom$VirtualDom$attribute;
+var $elm$html$Html$button = _VirtualDom_node('button');
+var $elm$virtual_dom$VirtualDom$Normal = function (a) {
+	return {$: 'Normal', a: a};
+};
+var $elm$virtual_dom$VirtualDom$on = _VirtualDom_on;
+var $elm$html$Html$Events$on = F2(
+	function (event, decoder) {
+		return A2(
+			$elm$virtual_dom$VirtualDom$on,
+			event,
+			$elm$virtual_dom$VirtualDom$Normal(decoder));
+	});
+var $elm$html$Html$Events$onClick = function (msg) {
+	return A2(
+		$elm$html$Html$Events$on,
+		'click',
+		$elm$json$Json$Decode$succeed(msg));
+};
+var $elm$html$Html$span = _VirtualDom_node('span');
+var $elm$html$Html$text = $elm$virtual_dom$VirtualDom$text;
+var $rundis$elm_bootstrap$Bootstrap$Carousel$controlNext = A2(
+	$elm$html$Html$button,
+	_List_fromArray(
+		[
+			$elm$html$Html$Attributes$class('btn btn-link carousel-control-next'),
+			A2($elm$html$Html$Attributes$attribute, 'role', 'button'),
+			$elm$html$Html$Events$onClick(
+			$rundis$elm_bootstrap$Bootstrap$Carousel$StartTransition($rundis$elm_bootstrap$Bootstrap$Carousel$Next))
+		]),
+	_List_fromArray(
+		[
+			A2(
+			$elm$html$Html$span,
+			_List_fromArray(
+				[
+					$elm$html$Html$Attributes$class('carousel-control-next-icon'),
+					A2($elm$html$Html$Attributes$attribute, 'aria-hidden', 'true')
+				]),
+			_List_Nil),
+			A2(
+			$elm$html$Html$span,
+			_List_fromArray(
+				[
+					$elm$html$Html$Attributes$class('sr-only')
+				]),
+			_List_fromArray(
+				[
+					$elm$html$Html$text('Next')
+				]))
+		]));
+var $rundis$elm_bootstrap$Bootstrap$Carousel$Prev = {$: 'Prev'};
+var $rundis$elm_bootstrap$Bootstrap$Carousel$controlPrev = A2(
+	$elm$html$Html$button,
+	_List_fromArray(
+		[
+			$elm$html$Html$Attributes$class('btn btn-link carousel-control-prev'),
+			$elm$html$Html$Events$onClick(
+			$rundis$elm_bootstrap$Bootstrap$Carousel$StartTransition($rundis$elm_bootstrap$Bootstrap$Carousel$Prev))
+		]),
+	_List_fromArray(
+		[
+			A2(
+			$elm$html$Html$span,
+			_List_fromArray(
+				[
+					$elm$html$Html$Attributes$class('carousel-control-prev-icon'),
+					A2($elm$html$Html$Attributes$attribute, 'aria-hidden', 'true')
+				]),
+			_List_Nil),
+			A2(
+			$elm$html$Html$span,
+			_List_fromArray(
+				[
+					$elm$html$Html$Attributes$class('sr-only')
+				]),
+			_List_fromArray(
+				[
+					$elm$html$Html$text('Previous')
+				]))
+		]));
+var $elm$html$Html$img = _VirtualDom_node('img');
+var $elm$html$Html$Keyed$node = $elm$virtual_dom$VirtualDom$keyedNode;
+var $elm$html$Html$Attributes$src = function (url) {
+	return A2(
+		$elm$html$Html$Attributes$stringProperty,
+		'src',
+		_VirtualDom_noJavaScriptOrHtmlUri(url));
+};
+var $elm$virtual_dom$VirtualDom$style = _VirtualDom_style;
+var $elm$html$Html$Attributes$style = $elm$virtual_dom$VirtualDom$style;
+var $rundis$elm_bootstrap$Bootstrap$Carousel$dirtyHack = function (size) {
+	return A3(
+		$elm$html$Html$Keyed$node,
+		'div',
+		_List_Nil,
+		_List_fromArray(
+			[
+				_Utils_Tuple2(
+				'dirtyHack',
+				A2(
+					$elm$html$Html$img,
+					_List_fromArray(
+						[
+							A2(
+							$elm$html$Html$Events$on,
+							'load',
+							$elm$json$Json$Decode$succeed(
+								$rundis$elm_bootstrap$Bootstrap$Carousel$EndTransition(size))),
+							$elm$html$Html$Attributes$src('https://package.elm-lang.org/assets/favicon.ico'),
+							A2($elm$html$Html$Attributes$style, 'display', 'none')
+						]),
+					_List_Nil))
+			]));
+};
+var $elm$html$Html$div = _VirtualDom_node('div');
+var $rundis$elm_bootstrap$Bootstrap$Carousel$Number = function (a) {
+	return {$: 'Number', a: a};
+};
+var $elm$core$Tuple$second = function (_v0) {
+	var y = _v0.b;
+	return y;
+};
+var $elm$html$Html$Attributes$classList = function (classes) {
+	return $elm$html$Html$Attributes$class(
+		A2(
+			$elm$core$String$join,
+			' ',
+			A2(
+				$elm$core$List$map,
+				$elm$core$Tuple$first,
+				A2($elm$core$List$filter, $elm$core$Tuple$second, classes))));
+};
+var $elm$html$Html$li = _VirtualDom_node('li');
+var $elm$html$Html$ol = _VirtualDom_node('ol');
+var $rundis$elm_bootstrap$Bootstrap$Carousel$indicators = F2(
+	function (size, activeIndex) {
+		var item = function (n) {
+			return A2(
+				$elm$html$Html$li,
+				_List_fromArray(
+					[
+						$elm$html$Html$Attributes$classList(
+						_List_fromArray(
+							[
+								_Utils_Tuple2(
+								'active',
+								_Utils_eq(n, activeIndex))
+							])),
+						$elm$html$Html$Events$onClick(
+						$rundis$elm_bootstrap$Bootstrap$Carousel$StartTransition(
+							$rundis$elm_bootstrap$Bootstrap$Carousel$Number(n)))
+					]),
+				_List_Nil);
+		};
+		var items = A2(
+			$elm$core$List$map,
+			item,
+			A2($elm$core$List$range, 0, size - 1));
+		return A2(
+			$elm$html$Html$ol,
+			_List_fromArray(
+				[
+					$elm$html$Html$Attributes$class('carousel-indicators')
+				]),
+			items);
+	});
+var $elm$virtual_dom$VirtualDom$map = _VirtualDom_map;
+var $elm$html$Html$map = $elm$virtual_dom$VirtualDom$map;
+var $elm$html$Html$Events$onMouseEnter = function (msg) {
+	return A2(
+		$elm$html$Html$Events$on,
+		'mouseenter',
+		$elm$json$Json$Decode$succeed(msg));
+};
+var $elm$html$Html$Events$onMouseLeave = function (msg) {
+	return A2(
+		$elm$html$Html$Events$on,
+		'mouseleave',
+		$elm$json$Json$Decode$succeed(msg));
+};
+var $rundis$elm_bootstrap$Bootstrap$Carousel$SlideInternal$addAttributes = F2(
+	function (newAttributes, _v0) {
+		var settings = _v0.a;
+		return $rundis$elm_bootstrap$Bootstrap$Carousel$SlideInternal$Config(
+			_Utils_update(
+				settings,
+				{
+					attributes: _Utils_ap(settings.attributes, newAttributes)
+				}));
+	});
+var $rundis$elm_bootstrap$Bootstrap$Carousel$transitionClassNames = F2(
+	function (currentIndex, transition) {
+		var base = 'carousel-item';
+		var leftNext = {directionalClassName: base + '-left', orderClassName: base + '-next'};
+		var rightPrev = {directionalClassName: base + '-right', orderClassName: base + '-prev'};
+		switch (transition.$) {
+			case 'Next':
+				return leftNext;
+			case 'Number':
+				var n = transition.a;
+				return (_Utils_cmp(n, currentIndex) > 0) ? leftNext : rightPrev;
+			default:
+				return rightPrev;
+		}
+	});
+var $rundis$elm_bootstrap$Bootstrap$Carousel$transitionClasses = F4(
+	function (index, currentIndex, newIndex, tstage) {
+		if (_Utils_eq(index, currentIndex)) {
+			switch (tstage.$) {
+				case 'NotAnimating':
+					return _List_fromArray(
+						[
+							_Utils_Tuple2('active', true)
+						]);
+				case 'Start':
+					var transition = tstage.a;
+					return _List_fromArray(
+						[
+							_Utils_Tuple2('active', true)
+						]);
+				default:
+					var transition = tstage.a;
+					var _v1 = A2($rundis$elm_bootstrap$Bootstrap$Carousel$transitionClassNames, currentIndex, transition);
+					var directionalClassName = _v1.directionalClassName;
+					return _List_fromArray(
+						[
+							_Utils_Tuple2('active', true),
+							_Utils_Tuple2(directionalClassName, true)
+						]);
+			}
+		} else {
+			if (_Utils_eq(index, newIndex)) {
+				switch (tstage.$) {
+					case 'NotAnimating':
+						return _List_Nil;
+					case 'Start':
+						var transition = tstage.a;
+						return _List_fromArray(
+							[
+								_Utils_Tuple2(
+								function ($) {
+									return $.orderClassName;
+								}(
+									A2($rundis$elm_bootstrap$Bootstrap$Carousel$transitionClassNames, currentIndex, transition)),
+								true)
+							]);
+					default:
+						var transition = tstage.a;
+						var _v3 = A2($rundis$elm_bootstrap$Bootstrap$Carousel$transitionClassNames, currentIndex, transition);
+						var directionalClassName = _v3.directionalClassName;
+						var orderClassName = _v3.orderClassName;
+						return _List_fromArray(
+							[
+								_Utils_Tuple2(directionalClassName, true),
+								_Utils_Tuple2(orderClassName, true)
+							]);
+				}
+			} else {
+				return _List_Nil;
+			}
+		}
+	});
+var $rundis$elm_bootstrap$Bootstrap$Carousel$SlideInternal$view = function (_v0) {
+	var attributes = _v0.a.attributes;
+	var content = _v0.a.content;
+	var caption = _v0.a.caption;
+	var captionHtml = function () {
+		if (caption.$ === 'Nothing') {
+			return $elm$html$Html$text('');
+		} else {
+			var rec = caption.a;
+			return A2(
+				$elm$html$Html$div,
+				_Utils_ap(
+					rec.attributes,
+					_List_fromArray(
+						[
+							$elm$html$Html$Attributes$class('carousel-caption d-none d-md-block')
+						])),
+				rec.children);
+		}
+	}();
+	return A2(
+		$elm$html$Html$div,
+		_Utils_ap(
+			attributes,
+			_List_fromArray(
+				[
+					$elm$html$Html$Attributes$class('carousel-item')
+				])),
+		function () {
+			if (content.$ === 'Image') {
+				var rec = content.a;
+				return _List_fromArray(
+					[
+						A2(
+						$elm$html$Html$img,
+						_Utils_ap(
+							rec.attributes,
+							_List_fromArray(
+								[
+									$elm$html$Html$Attributes$class('d-block img-fluid'),
+									$elm$html$Html$Attributes$src(rec.src)
+								])),
+						_List_Nil),
+						captionHtml
+					]);
+			} else {
+				var html = content.a.html;
+				return _List_fromArray(
+					[html, captionHtml]);
+			}
+		}());
+};
+var $rundis$elm_bootstrap$Bootstrap$Carousel$viewSlide = F3(
+	function (model, index, slide) {
+		var tstage = model.a;
+		var currentIndex = model.b.currentIndex;
+		var size = model.b.size;
+		var newIndex = A3($rundis$elm_bootstrap$Bootstrap$Carousel$nextIndex, tstage, currentIndex, size);
+		return $rundis$elm_bootstrap$Bootstrap$Carousel$SlideInternal$view(
+			A2(
+				$rundis$elm_bootstrap$Bootstrap$Carousel$SlideInternal$addAttributes,
+				_List_fromArray(
+					[
+						$elm$html$Html$Attributes$classList(
+						A4($rundis$elm_bootstrap$Bootstrap$Carousel$transitionClasses, index, currentIndex, newIndex, tstage))
+					]),
+				slide));
+	});
+var $rundis$elm_bootstrap$Bootstrap$Carousel$view = F2(
+	function (model, _v0) {
+		var tstage = model.a;
+		var hovering = model.b.hovering;
+		var currentIndex = model.b.currentIndex;
+		var wrap = model.b.wrap;
+		var settings = _v0.a;
+		var slidesHtml = A2(
+			$elm$html$Html$div,
+			_List_fromArray(
+				[
+					$elm$html$Html$Attributes$class('carousel-inner'),
+					A2($elm$html$Html$Attributes$attribute, 'role', 'listbox')
+				]),
+			A2(
+				$elm$core$List$indexedMap,
+				$rundis$elm_bootstrap$Bootstrap$Carousel$viewSlide(model),
+				settings.slides));
+		var size = $elm$core$List$length(settings.slides);
+		var indicatorsHtml = settings.indicators ? A2(
+			$rundis$elm_bootstrap$Bootstrap$Carousel$indicators,
+			size,
+			A3($rundis$elm_bootstrap$Bootstrap$Carousel$nextIndex, tstage, currentIndex, size)) : $elm$html$Html$text('');
+		var defaultCarouselAttributes = _Utils_ap(
+			_List_fromArray(
+				[
+					$elm$html$Html$Attributes$class('carousel slide'),
+					A2(
+					$elm$html$Html$Events$on,
+					'transitionend',
+					$elm$json$Json$Decode$succeed(
+						settings.toMsg(
+							$rundis$elm_bootstrap$Bootstrap$Carousel$EndTransition(size))))
+				]),
+			(!_Utils_eq(hovering, $rundis$elm_bootstrap$Bootstrap$Carousel$IgnoreHover)) ? _List_fromArray(
+				[
+					$elm$html$Html$Events$onMouseEnter(
+					settings.toMsg(
+						$rundis$elm_bootstrap$Bootstrap$Carousel$SetHover($rundis$elm_bootstrap$Bootstrap$Carousel$Hovered))),
+					$elm$html$Html$Events$onMouseLeave(
+					settings.toMsg(
+						$rundis$elm_bootstrap$Bootstrap$Carousel$SetHover($rundis$elm_bootstrap$Bootstrap$Carousel$NotHovered)))
+				]) : _List_Nil);
+		var controlsHtml = settings.controls ? ((wrap || ((!(!currentIndex)) && (!_Utils_eq(currentIndex, size - 1)))) ? _List_fromArray(
+			[$rundis$elm_bootstrap$Bootstrap$Carousel$controlPrev, $rundis$elm_bootstrap$Bootstrap$Carousel$controlNext]) : ((!currentIndex) ? _List_fromArray(
+			[$rundis$elm_bootstrap$Bootstrap$Carousel$controlNext]) : _List_fromArray(
+			[$rundis$elm_bootstrap$Bootstrap$Carousel$controlPrev]))) : _List_Nil;
+		return A2(
+			$elm$html$Html$div,
+			_Utils_ap(settings.attributes, defaultCarouselAttributes),
+			A2(
+				$elm$core$List$cons,
+				slidesHtml,
+				A2(
+					$elm$core$List$map,
+					$elm$html$Html$map(settings.toMsg),
+					_Utils_ap(
+						_List_fromArray(
+							[
+								$rundis$elm_bootstrap$Bootstrap$Carousel$dirtyHack(size),
+								indicatorsHtml
+							]),
+						controlsHtml))));
+	});
+var $rundis$elm_bootstrap$Bootstrap$Carousel$withControls = function (_v0) {
+	var settings = _v0.a;
+	return $rundis$elm_bootstrap$Bootstrap$Carousel$Config(
+		_Utils_update(
+			settings,
+			{controls: true}));
+};
+var $rundis$elm_bootstrap$Bootstrap$Carousel$withIndicators = function (_v0) {
+	var settings = _v0.a;
+	return $rundis$elm_bootstrap$Bootstrap$Carousel$Config(
+		_Utils_update(
+			settings,
+			{indicators: true}));
+};
+var $author$project$Main$viewCarousel = F2(
+	function (tab, model) {
+		var images = function () {
+			switch (tab.$) {
+				case 'Enteriors':
+					return $author$project$Images$enteriorok;
+				case 'Moodboards':
+					return $author$project$Images$latvanytervek;
+				default:
+					return _List_Nil;
+			}
+		}();
+		var slides = A2(
+			$elm$core$List$map,
+			$rundis$elm_bootstrap$Bootstrap$Carousel$Slide$config(_List_Nil),
+			A2(
+				$elm$core$List$map,
+				$rundis$elm_bootstrap$Bootstrap$Carousel$Slide$image(
+					_List_fromArray(
+						[
+							$elm$html$Html$Attributes$class('slide')
+						])),
+				images));
+		return A3(
+			$elm$core$Basics$composeR,
+			$rundis$elm_bootstrap$Bootstrap$Carousel$view(model.carouselState),
+			$rtfeldman$elm_css$Html$Styled$fromUnstyled,
+			A2(
+				$rundis$elm_bootstrap$Bootstrap$Carousel$slides,
+				slides,
+				$rundis$elm_bootstrap$Bootstrap$Carousel$withIndicators(
+					$rundis$elm_bootstrap$Bootstrap$Carousel$withControls(
+						A2(
+							$rundis$elm_bootstrap$Bootstrap$Carousel$config,
+							$author$project$Main$CarouselMsg,
+							_List_fromArray(
+								[
+									$elm$html$Html$Attributes$class('carousel')
+								]))))));
 	});
 var $rtfeldman$elm_css$Css$Structure$Compatible = {$: 'Compatible'};
 var $rtfeldman$elm_css$Css$auto = {alignItemsOrAuto: $rtfeldman$elm_css$Css$Structure$Compatible, cursor: $rtfeldman$elm_css$Css$Structure$Compatible, flexBasis: $rtfeldman$elm_css$Css$Structure$Compatible, intOrAuto: $rtfeldman$elm_css$Css$Structure$Compatible, justifyContentOrAuto: $rtfeldman$elm_css$Css$Structure$Compatible, lengthOrAuto: $rtfeldman$elm_css$Css$Structure$Compatible, lengthOrAutoOrCoverOrContain: $rtfeldman$elm_css$Css$Structure$Compatible, lengthOrNumberOrAutoOrNoneOrContent: $rtfeldman$elm_css$Css$Structure$Compatible, overflow: $rtfeldman$elm_css$Css$Structure$Compatible, pointerEvents: $rtfeldman$elm_css$Css$Structure$Compatible, tableLayout: $rtfeldman$elm_css$Css$Structure$Compatible, textRendering: $rtfeldman$elm_css$Css$Structure$Compatible, touchAction: $rtfeldman$elm_css$Css$Structure$Compatible, value: 'auto'};
@@ -8337,10 +8897,6 @@ var $rtfeldman$elm_css$Css$prop1 = F2(
 		return A2($rtfeldman$elm_css$Css$property, key, arg.value);
 	});
 var $rtfeldman$elm_css$Css$center = $rtfeldman$elm_css$Css$prop1('center');
-var $rtfeldman$elm_css$VirtualDom$Styled$Attribute = F3(
-	function (a, b, c) {
-		return {$: 'Attribute', a: a, b: b, c: c};
-	});
 var $rtfeldman$elm_css$VirtualDom$Styled$murmurSeed = 15739;
 var $rtfeldman$elm_css$VirtualDom$Styled$getClassname = function (styles) {
 	return $elm$core$List$isEmpty(styles) ? 'unstyled' : A2(
@@ -8359,14 +8915,6 @@ var $rtfeldman$elm_css$VirtualDom$Styled$getClassname = function (styles) {
 									styles,
 									$rtfeldman$elm_css$Css$Structure$UniversalSelectorSequence(_List_Nil)))))))));
 };
-var $elm$virtual_dom$VirtualDom$property = F2(
-	function (key, value) {
-		return A2(
-			_VirtualDom_property,
-			_VirtualDom_noInnerHtmlOrFormAction(key),
-			_VirtualDom_noJavaScriptOrHtmlUri(value));
-	});
-var $elm$json$Json$Encode$string = _Json_wrap;
 var $rtfeldman$elm_css$Html$Styled$Internal$css = function (styles) {
 	var classname = $rtfeldman$elm_css$VirtualDom$Styled$getClassname(styles);
 	var classProperty = A2(
@@ -8377,17 +8925,11 @@ var $rtfeldman$elm_css$Html$Styled$Internal$css = function (styles) {
 };
 var $rtfeldman$elm_css$Html$Styled$Attributes$css = $rtfeldman$elm_css$Html$Styled$Internal$css;
 var $rtfeldman$elm_css$Css$displayFlex = A2($rtfeldman$elm_css$Css$property, 'display', 'flex');
-var $rtfeldman$elm_css$VirtualDom$Styled$Node = F3(
-	function (a, b, c) {
-		return {$: 'Node', a: a, b: b, c: c};
-	});
-var $rtfeldman$elm_css$VirtualDom$Styled$node = $rtfeldman$elm_css$VirtualDom$Styled$Node;
-var $rtfeldman$elm_css$Html$Styled$node = $rtfeldman$elm_css$VirtualDom$Styled$node;
-var $rtfeldman$elm_css$Html$Styled$div = $rtfeldman$elm_css$Html$Styled$node('div');
 var $rtfeldman$elm_css$Css$fontStyle = $rtfeldman$elm_css$Css$prop1('font-style');
 var $rtfeldman$elm_css$Css$height = $rtfeldman$elm_css$Css$prop1('height');
 var $rtfeldman$elm_css$Html$Styled$img = $rtfeldman$elm_css$Html$Styled$node('img');
 var $rtfeldman$elm_css$Css$italic = {fontStyle: $rtfeldman$elm_css$Css$Structure$Compatible, value: 'italic'};
+var $rtfeldman$elm_css$Css$justify = $rtfeldman$elm_css$Css$prop1('justify');
 var $rtfeldman$elm_css$Css$lineHeight = $rtfeldman$elm_css$Css$prop1('line-height');
 var $rtfeldman$elm_css$Css$UnitlessFloat = {$: 'UnitlessFloat'};
 var $rtfeldman$elm_css$Css$num = function (val) {
@@ -8416,41 +8958,23 @@ var $rtfeldman$elm_css$Css$prop4 = F5(
 var $rtfeldman$elm_css$Css$padding4 = $rtfeldman$elm_css$Css$prop4('padding');
 var $rtfeldman$elm_css$Css$PxUnits = {$: 'PxUnits'};
 var $rtfeldman$elm_css$Css$px = A2($rtfeldman$elm_css$Css$Internal$lengthConverter, $rtfeldman$elm_css$Css$PxUnits, 'px');
-var $rtfeldman$elm_css$VirtualDom$Styled$property = F2(
-	function (key, value) {
-		return A3(
-			$rtfeldman$elm_css$VirtualDom$Styled$Attribute,
-			A2($elm$virtual_dom$VirtualDom$property, key, value),
-			_List_Nil,
-			'');
-	});
-var $rtfeldman$elm_css$Html$Styled$Attributes$stringProperty = F2(
-	function (key, string) {
-		return A2(
-			$rtfeldman$elm_css$VirtualDom$Styled$property,
-			key,
-			$elm$json$Json$Encode$string(string));
-	});
 var $rtfeldman$elm_css$Html$Styled$Attributes$src = function (url) {
 	return A2($rtfeldman$elm_css$Html$Styled$Attributes$stringProperty, 'src', url);
 };
 var $author$project$Main$standardHeight = 640;
 var $author$project$Main$standardWidth = 960;
-var $rtfeldman$elm_css$VirtualDom$Styled$Unstyled = function (a) {
-	return {$: 'Unstyled', a: a};
-};
 var $rtfeldman$elm_css$VirtualDom$Styled$text = function (str) {
 	return $rtfeldman$elm_css$VirtualDom$Styled$Unstyled(
 		$elm$virtual_dom$VirtualDom$text(str));
 };
 var $rtfeldman$elm_css$Html$Styled$text = $rtfeldman$elm_css$VirtualDom$Styled$text;
-var $elm$virtual_dom$VirtualDom$attribute = F2(
-	function (key, value) {
-		return A2(
-			_VirtualDom_attribute,
-			_VirtualDom_noOnOrFormAction(key),
-			_VirtualDom_noJavaScriptOrHtmlUri(value));
-	});
+var $rtfeldman$elm_css$Css$textAlign = function (fn) {
+	return A3(
+		$rtfeldman$elm_css$Css$Internal$getOverloadedProperty,
+		'textAlign',
+		'text-align',
+		fn($rtfeldman$elm_css$Css$Internal$lengthForOverloadedProperty));
+};
 var $rtfeldman$elm_css$VirtualDom$Styled$attribute = F2(
 	function (key, value) {
 		return A3(
@@ -8500,12 +9024,13 @@ var $author$project$Main$about = A2(
 							A4(
 							$rtfeldman$elm_css$Css$padding4,
 							$rtfeldman$elm_css$Css$zero,
-							$rtfeldman$elm_css$Css$zero,
+							$rtfeldman$elm_css$Css$px(50),
 							$rtfeldman$elm_css$Css$zero,
 							$rtfeldman$elm_css$Css$px(30)),
 							$rtfeldman$elm_css$Css$lineHeight(
-							$rtfeldman$elm_css$Css$num(2.5)),
-							$rtfeldman$elm_css$Css$fontStyle($rtfeldman$elm_css$Css$italic)
+							$rtfeldman$elm_css$Css$num(1.5)),
+							$rtfeldman$elm_css$Css$fontStyle($rtfeldman$elm_css$Css$italic),
+							$rtfeldman$elm_css$Css$textAlign($rtfeldman$elm_css$Css$justify)
 						]))
 				]),
 			_List_fromArray(
@@ -8608,29 +9133,71 @@ var $author$project$Main$contact = function () {
 					]))
 			]));
 }();
-var $author$project$Images$enteriorok = _List_fromArray(
-	['./assets/enteriorok/_2 PIX7973.jpg', './assets/enteriorok/S 12621948_959632030758276_4427596913601600779_o.jpg', './assets/enteriorok/_20 PIX7823.jpg', './assets/enteriorok/_11 PIX7919.jpg', './assets/enteriorok/IMG_1513_edited.jpg', './assets/enteriorok/IMG_1407_edited.jpg', './assets/enteriorok/_PIX2776-HDR.jpg', './assets/enteriorok/Roberta-lakas-brody-40m.jpg', './assets/enteriorok/Roberta-lakas-brody-59.jpg', './assets/enteriorok/_19 PIX7778.jpg', './assets/enteriorok/Roberta-lakas-brody-20m.jpg', './assets/enteriorok/_PIX2615.jpg', './assets/enteriorok/IMG_1402_edited.jpg', './assets/enteriorok/_25 PIX7599.jpg', './assets/enteriorok/S 12514026_959631974091615_7905761173753907936_o.jpg', './assets/enteriorok/_PIX2673.jpg', './assets/enteriorok/_18 PIX7818.jpg', './assets/enteriorok/S 12525205_959631850758294_4979434988918525002_o.jpg', './assets/enteriorok/IMG_1450_edited.jpg', './assets/enteriorok/_24 PIX7625.jpg', './assets/enteriorok/Roberta-lakas-brody-11.jpg', './assets/enteriorok/_PIX2666.jpg', './assets/enteriorok/_PIX2300.jpg', './assets/enteriorok/IMG_1495_edited.jpg', './assets/enteriorok/Roberta-lakas-brody-13.jpg', './assets/enteriorok/Roberta-lakas-brody-12.jpg', './assets/enteriorok/IMG_1441_edited.jpg', './assets/enteriorok/IMG_1476_edited.jpg', './assets/enteriorok/_3 PIX7983.jpg', './assets/enteriorok/_4 PIX7964.jpg', './assets/enteriorok/_PIX2498.jpg', './assets/enteriorok/_PIX2301.jpg', './assets/enteriorok/IMG_1489_edited.jpg', './assets/enteriorok/Roberta-lakas-brody-26m.jpg', './assets/enteriorok/_PIX2477.jpg', './assets/enteriorok/_PIX2339.jpg', './assets/enteriorok/_PIX2503.jpg', './assets/enteriorok/_15 PIX7719.jpg', './assets/enteriorok/_PIX2700.jpg', './assets/enteriorok/IMG_1501_edited_true-color.jpg', './assets/enteriorok/_12 PIX8009.jpg', './assets/enteriorok/_PIX2272.jpg', './assets/enteriorok/_16 PIX7813.jpg', './assets/enteriorok/_PIX2652.jpg', './assets/enteriorok/_PIX2691.jpg', './assets/enteriorok/_PIX2450.jpg', './assets/enteriorok/_10 PIX7855.jpg', './assets/enteriorok/_23 PIX7580.jpg', './assets/enteriorok/S 12615435_959631860758293_2649593505118818303_o.jpg', './assets/enteriorok/Roberta-lakas-brody-25m.jpg', './assets/enteriorok/_PIX2645.jpg', './assets/enteriorok/_21 PIX7830.jpg', './assets/enteriorok/_PIX2697.jpg', './assets/enteriorok/_PIX2324.jpg', './assets/enteriorok/_PIX2709.jpg', './assets/enteriorok/_PIX2721.jpg', './assets/enteriorok/IMG_1464_edited.jpg', './assets/enteriorok/_1 PIX7986.jpg', './assets/enteriorok/_PIX2657.jpg', './assets/enteriorok/Roberta-lakas-brody-53m.jpg', './assets/enteriorok/_9 PIX7889.jpg', './assets/enteriorok/_PIX2534.jpg', './assets/enteriorok/_17 PIX7768.jpg', './assets/enteriorok/_PIX2369.jpg', './assets/enteriorok/_PIX2396.jpg', './assets/enteriorok/Roberta-lakas-brody-52.jpg', './assets/enteriorok/Roberta-lakas-brody-46.jpg', './assets/enteriorok/IMG_1427_edited.jpg', './assets/enteriorok/S 12513878_959631854091627_522075481368800160_o.jpg', './assets/enteriorok/_PIX2354.jpg', './assets/enteriorok/_5 PIX7988.jpg', './assets/enteriorok/_6 PIX7912.jpg', './assets/enteriorok/_14 PIX7682.jpg', './assets/enteriorok/Roberta-lakas-brody-25m2.jpg', './assets/enteriorok/S 12593487_959631954091617_6014730192592584657_o.jpg', './assets/enteriorok/_13 PIX7664.jpg', './assets/enteriorok/_8 PIX7925.jpg', './assets/enteriorok/_22 PIX7614.jpg', './assets/enteriorok/_7 PIX7952.jpg', './assets/enteriorok/Roberta-lakas-brody-42.jpg']);
-var $author$project$Main$wrap = function (image) {
+var $author$project$Main$EnteriorsImageClicked = {$: 'EnteriorsImageClicked'};
+var $rtfeldman$elm_css$VirtualDom$Styled$on = F2(
+	function (eventName, handler) {
+		return A3(
+			$rtfeldman$elm_css$VirtualDom$Styled$Attribute,
+			A2($elm$virtual_dom$VirtualDom$on, eventName, handler),
+			_List_Nil,
+			'');
+	});
+var $rtfeldman$elm_css$Html$Styled$Events$on = F2(
+	function (event, decoder) {
+		return A2(
+			$rtfeldman$elm_css$VirtualDom$Styled$on,
+			event,
+			$elm$virtual_dom$VirtualDom$Normal(decoder));
+	});
+var $rtfeldman$elm_css$Html$Styled$Events$onClick = function (msg) {
 	return A2(
-		$rtfeldman$elm_css$Html$Styled$img,
-		_List_fromArray(
-			[
-				$rtfeldman$elm_css$Html$Styled$Attributes$width($author$project$Main$standardWidth),
-				$rtfeldman$elm_css$Html$Styled$Attributes$src(image)
-			]),
-		_List_Nil);
+		$rtfeldman$elm_css$Html$Styled$Events$on,
+		'click',
+		$elm$json$Json$Decode$succeed(msg));
 };
-var $author$project$Main$enteriors = A2(
-	$rtfeldman$elm_css$Html$Styled$div,
-	_List_Nil,
-	A2($elm$core$List$map, $author$project$Main$wrap, $author$project$Images$enteriorok));
-var $author$project$Main$home = $author$project$Main$wrap('assets/portré2.jpg');
-var $author$project$Images$latvanytervek = _List_fromArray(
-	['./assets/latvanytervek/08 kishalo.jpg', './assets/latvanytervek/04 nappali.jpg', './assets/latvanytervek/01 konyha.jpg', './assets/latvanytervek/05 nagyhalojpg.jpg', './assets/latvanytervek/02 nappali.jpg', './assets/latvanytervek/03 konyha.jpg', './assets/latvanytervek/05 nappali.jpg', './assets/latvanytervek/09 kishalo.jpg', './assets/latvanytervek/06 nagyhalo.jpg', './assets/latvanytervek/03 nappali.jpg', './assets/latvanytervek/02 konyha.jpg', './assets/latvanytervek/07 nagyhalo.jpg', './assets/latvanytervek/01 előszoba.jpg', './assets/latvanytervek/06 nappali.jpg']);
-var $author$project$Main$moodboards = A2(
-	$rtfeldman$elm_css$Html$Styled$div,
-	_List_Nil,
-	A2($elm$core$List$map, $author$project$Main$wrap, $author$project$Images$latvanytervek));
+var $author$project$Main$enteriors = function () {
+	var wrap = function (image) {
+		return A2(
+			$rtfeldman$elm_css$Html$Styled$img,
+			_List_fromArray(
+				[
+					$rtfeldman$elm_css$Html$Styled$Attributes$width($author$project$Main$standardWidth),
+					$rtfeldman$elm_css$Html$Styled$Attributes$src(image),
+					$rtfeldman$elm_css$Html$Styled$Events$onClick($author$project$Main$EnteriorsImageClicked)
+				]),
+			_List_Nil);
+	};
+	return A2(
+		$rtfeldman$elm_css$Html$Styled$div,
+		_List_Nil,
+		A2($elm$core$List$map, wrap, $author$project$Images$enteriorok));
+}();
+var $author$project$Main$home = A2(
+	$rtfeldman$elm_css$Html$Styled$img,
+	_List_fromArray(
+		[
+			$rtfeldman$elm_css$Html$Styled$Attributes$width($author$project$Main$standardWidth),
+			$rtfeldman$elm_css$Html$Styled$Attributes$src('assets/portré2.jpg')
+		]),
+	_List_Nil);
+var $author$project$Main$MoodboardsImageClicked = {$: 'MoodboardsImageClicked'};
+var $author$project$Main$moodboards = function () {
+	var wrap = function (image) {
+		return A2(
+			$rtfeldman$elm_css$Html$Styled$img,
+			_List_fromArray(
+				[
+					$rtfeldman$elm_css$Html$Styled$Attributes$width($author$project$Main$standardWidth),
+					$rtfeldman$elm_css$Html$Styled$Attributes$src(image),
+					$rtfeldman$elm_css$Html$Styled$Events$onClick($author$project$Main$MoodboardsImageClicked)
+				]),
+			_List_Nil);
+	};
+	return A2(
+		$rtfeldman$elm_css$Html$Styled$div,
+		_List_Nil,
+		A2($elm$core$List$map, wrap, $author$project$Images$latvanytervek));
+}();
 var $author$project$Main$content_ = function (_v0) {
 	var tab = _v0.tab;
 	switch (tab.$) {
@@ -8734,34 +9301,10 @@ var $rtfeldman$elm_css$Css$pseudoClass = function (_class) {
 };
 var $rtfeldman$elm_css$Css$hover = $rtfeldman$elm_css$Css$pseudoClass('hover');
 var $rtfeldman$elm_css$Css$marginRight = $rtfeldman$elm_css$Css$prop1('margin-right');
-var $elm$virtual_dom$VirtualDom$Normal = function (a) {
-	return {$: 'Normal', a: a};
-};
-var $elm$virtual_dom$VirtualDom$on = _VirtualDom_on;
-var $rtfeldman$elm_css$VirtualDom$Styled$on = F2(
-	function (eventName, handler) {
-		return A3(
-			$rtfeldman$elm_css$VirtualDom$Styled$Attribute,
-			A2($elm$virtual_dom$VirtualDom$on, eventName, handler),
-			_List_Nil,
-			'');
-	});
-var $rtfeldman$elm_css$Html$Styled$Events$on = F2(
-	function (event, decoder) {
-		return A2(
-			$rtfeldman$elm_css$VirtualDom$Styled$on,
-			event,
-			$elm$virtual_dom$VirtualDom$Normal(decoder));
-	});
-var $rtfeldman$elm_css$Html$Styled$Events$onClick = function (msg) {
-	return A2(
-		$rtfeldman$elm_css$Html$Styled$Events$on,
-		'click',
-		$elm$json$Json$Decode$succeed(msg));
-};
 var $rtfeldman$elm_css$Css$position = $rtfeldman$elm_css$Css$prop1('position');
 var $rtfeldman$elm_css$Css$relative = {position: $rtfeldman$elm_css$Css$Structure$Compatible, value: 'relative'};
 var $rtfeldman$elm_css$Css$spaceBetween = $rtfeldman$elm_css$Css$prop1('space-between');
+var $rtfeldman$elm_css$Css$stretch = $rtfeldman$elm_css$Css$prop1('stretch');
 var $rtfeldman$elm_css$Css$top = $rtfeldman$elm_css$Css$prop1('top');
 var $rtfeldman$elm_css$Css$Transitions$Top = {$: 'Top'};
 var $rtfeldman$elm_css$Css$Transitions$Transition = function (a) {
@@ -9081,12 +9624,20 @@ var $author$project$Main$header = function (model) {
 						_List_fromArray(
 							[
 								$rtfeldman$elm_css$Css$flexGrow(
-								$rtfeldman$elm_css$Css$num(1))
+								$rtfeldman$elm_css$Css$num(1)),
+								$rtfeldman$elm_css$Css$displayFlex,
+								$rtfeldman$elm_css$Css$alignItems($rtfeldman$elm_css$Css$flexEnd)
 							]))
 					]),
 				_List_fromArray(
 					[
-						$rtfeldman$elm_css$Html$Styled$text(label)
+						A2(
+						$rtfeldman$elm_css$Html$Styled$div,
+						_List_Nil,
+						_List_fromArray(
+							[
+								$rtfeldman$elm_css$Html$Styled$text(label)
+							]))
 					]));
 		});
 	return A2(
@@ -9097,8 +9648,9 @@ var $author$project$Main$header = function (model) {
 				_List_fromArray(
 					[
 						$rtfeldman$elm_css$Css$displayFlex,
+						$rtfeldman$elm_css$Css$flexDirection($rtfeldman$elm_css$Css$row),
 						$rtfeldman$elm_css$Css$justifyContent($rtfeldman$elm_css$Css$spaceBetween),
-						$rtfeldman$elm_css$Css$alignItems($rtfeldman$elm_css$Css$flexEnd),
+						$rtfeldman$elm_css$Css$alignItems($rtfeldman$elm_css$Css$stretch),
 						$rtfeldman$elm_css$Css$fontSize(
 						$rtfeldman$elm_css$Css$px(24)),
 						A3(
@@ -9145,7 +9697,7 @@ var $author$project$Main$theme = {
 	primary: A3($rtfeldman$elm_css$Css$rgb, 0, 0, 0),
 	secondary: A3($rtfeldman$elm_css$Css$rgb, 250, 240, 230)
 };
-var $author$project$Main$view = function (model) {
+var $author$project$Main$viewPage = function (model) {
 	return A2(
 		$rtfeldman$elm_css$Html$Styled$div,
 		_List_fromArray(
@@ -9180,6 +9732,26 @@ var $author$project$Main$view = function (model) {
 						$author$project$Main$content(model),
 						_List_fromArray(
 							[$author$project$Main$footer]))))
+			]));
+};
+var $author$project$Main$view = function (model) {
+	return A2(
+		$rtfeldman$elm_css$Html$Styled$div,
+		_List_fromArray(
+			[
+				$rtfeldman$elm_css$Html$Styled$Attributes$class('app')
+			]),
+		_List_fromArray(
+			[
+				function () {
+				var _v0 = model.carouselVisible;
+				if (_v0.$ === 'Just') {
+					var tab = _v0.a;
+					return A2($author$project$Main$viewCarousel, tab, model);
+				} else {
+					return $author$project$Main$viewPage(model);
+				}
+			}()
 			]));
 };
 var $author$project$Main$main = $elm$browser$Browser$element(
