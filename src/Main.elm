@@ -1,5 +1,7 @@
 module Main exposing (..)
 
+import Bootstrap.Carousel as Carousel
+import Bootstrap.Carousel.Slide as Slide
 import Browser
 import Css exposing (..)
 import Css.Transitions exposing (transition)
@@ -13,7 +15,7 @@ main : Program () Model Msg
 main =
     Browser.element
         { init = \_ -> initialModel |> cmdNone
-        , subscriptions = \_ -> Sub.none
+        , subscriptions = \model -> Carousel.subscriptions model.carouselState CarouselMsg
         , update = update
         , view = view >> toUnstyled
         }
@@ -46,6 +48,7 @@ type Msg
     | MoodboardsClicked
     | AboutClicked
     | ContactClicked
+    | CarouselMsg Carousel.Msg
 
 
 update : Msg -> Model -> ( Model, Cmd msg )
@@ -65,6 +68,9 @@ update msg model =
 
         ContactClicked ->
             { model | tab = Contact } |> cmdNone
+
+        CarouselMsg subMsg ->
+            { model | carouselState = Carousel.update subMsg model.carouselState } |> cmdNone
 
 
 cmdNone : Model -> ( Model, Cmd msg )
