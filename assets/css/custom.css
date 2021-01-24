@@ -2,3 +2,23 @@ body {
   font-family: 'Lato', sans-serif;
 }
 
+.carousel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slide {
+  
+}
+
+.headerText {
+  position: relative;
+  top: 0px;
+  transition: top 200ms 20ms ease;
+}
+
+.headerContainer:hover .headerText {
+  top: -10px;
+}
+

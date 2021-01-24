@@ -146,18 +146,6 @@ viewCarousel tab model =
 header : Model -> Html Msg
 header model =
     let
-        jumpOnHover =
-            css
-                [ position relative
-                , top (px 0)
-                , hover
-                    [ top (px -10)
-                    ]
-                , transition
-                    [ Css.Transitions.top3 200 20 Css.Transitions.ease
-                    ]
-                ]
-
         logo =
             img
                 [ src "assets/FR-no-margin.png"
@@ -171,14 +159,17 @@ header model =
         headerItem msg label =
             div
                 [ onClick msg
-                , jumpOnHover
+                , class "headerContainer"
                 , css
                     [ flexGrow (num 1)
                     , displayFlex
                     , alignItems flexEnd
                     ]
                 ]
-                [ div [] [ text label ] ]
+                [ div
+                    [ class "headerText" ]
+                    [ text label ]
+                ]
     in
     div
         [ css

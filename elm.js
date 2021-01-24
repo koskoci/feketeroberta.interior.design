@@ -9284,300 +9284,11 @@ var $author$project$Main$ContactClicked = {$: 'ContactClicked'};
 var $author$project$Main$EnteriorsClicked = {$: 'EnteriorsClicked'};
 var $author$project$Main$HomeClicked = {$: 'HomeClicked'};
 var $author$project$Main$MoodboardsClicked = {$: 'MoodboardsClicked'};
-var $rtfeldman$elm_css$Css$Transitions$Ease = {$: 'Ease'};
-var $rtfeldman$elm_css$Css$Transitions$ease = $rtfeldman$elm_css$Css$Transitions$Ease;
 var $rtfeldman$elm_css$Css$flexEnd = $rtfeldman$elm_css$Css$prop1('flex-end');
 var $rtfeldman$elm_css$Css$flexGrow = $rtfeldman$elm_css$Css$prop1('flex-grow');
-var $rtfeldman$elm_css$Css$Preprocess$ExtendSelector = F2(
-	function (a, b) {
-		return {$: 'ExtendSelector', a: a, b: b};
-	});
-var $rtfeldman$elm_css$Css$Structure$PseudoClassSelector = function (a) {
-	return {$: 'PseudoClassSelector', a: a};
-};
-var $rtfeldman$elm_css$Css$pseudoClass = function (_class) {
-	return $rtfeldman$elm_css$Css$Preprocess$ExtendSelector(
-		$rtfeldman$elm_css$Css$Structure$PseudoClassSelector(_class));
-};
-var $rtfeldman$elm_css$Css$hover = $rtfeldman$elm_css$Css$pseudoClass('hover');
 var $rtfeldman$elm_css$Css$marginRight = $rtfeldman$elm_css$Css$prop1('margin-right');
-var $rtfeldman$elm_css$Css$position = $rtfeldman$elm_css$Css$prop1('position');
-var $rtfeldman$elm_css$Css$relative = {position: $rtfeldman$elm_css$Css$Structure$Compatible, value: 'relative'};
 var $rtfeldman$elm_css$Css$spaceBetween = $rtfeldman$elm_css$Css$prop1('space-between');
 var $rtfeldman$elm_css$Css$stretch = $rtfeldman$elm_css$Css$prop1('stretch');
-var $rtfeldman$elm_css$Css$top = $rtfeldman$elm_css$Css$prop1('top');
-var $rtfeldman$elm_css$Css$Transitions$Top = {$: 'Top'};
-var $rtfeldman$elm_css$Css$Transitions$Transition = function (a) {
-	return {$: 'Transition', a: a};
-};
-var $rtfeldman$elm_css$Css$Transitions$fullTransition = F4(
-	function (animation, duration, delay, timing) {
-		return $rtfeldman$elm_css$Css$Transitions$Transition(
-			{
-				animation: animation,
-				delay: $elm$core$Maybe$Just(delay),
-				duration: duration,
-				timing: $elm$core$Maybe$Just(timing)
-			});
-	});
-var $rtfeldman$elm_css$Css$Transitions$top3 = $rtfeldman$elm_css$Css$Transitions$fullTransition($rtfeldman$elm_css$Css$Transitions$Top);
-var $rtfeldman$elm_css$Css$Transitions$propToString = function (prop) {
-	switch (prop.$) {
-		case 'Background':
-			return 'background';
-		case 'BackgroundColor':
-			return 'background-color';
-		case 'BackgroundPosition':
-			return 'background-position';
-		case 'BackgroundSize':
-			return 'background-size';
-		case 'Border':
-			return 'border';
-		case 'BorderBottom':
-			return 'border-bottom';
-		case 'BorderBottomColor':
-			return 'border-bottom-color';
-		case 'BorderBottomLeftRadius':
-			return 'border-bottom-left-radius';
-		case 'BorderBottomRightRadius':
-			return 'border-bottom-right-radius';
-		case 'BorderBottomWidth':
-			return 'border-bottom-width';
-		case 'BorderColor':
-			return 'border-color';
-		case 'BorderLeft':
-			return 'border-left';
-		case 'BorderLeftColor':
-			return 'border-left-color';
-		case 'BorderLeftWidth':
-			return 'border-left-width';
-		case 'BorderRadius':
-			return 'border-radius';
-		case 'BorderRight':
-			return 'border-right';
-		case 'BorderRightColor':
-			return 'border-right-color';
-		case 'BorderRightWidth':
-			return 'border-right-width';
-		case 'BorderTop':
-			return 'border-top';
-		case 'BorderTopColor':
-			return 'border-top-color';
-		case 'BorderTopLeftRadius':
-			return 'border-top-left-radius';
-		case 'BorderTopRightRadius':
-			return 'border-top-right-radius';
-		case 'BorderTopWidth':
-			return 'border-top-width';
-		case 'BorderWidth':
-			return 'border-width';
-		case 'Bottom':
-			return 'bottom';
-		case 'BoxShadow':
-			return 'box-shadow';
-		case 'CaretColor':
-			return 'caret-color';
-		case 'Clip':
-			return 'clip';
-		case 'ClipPath':
-			return 'clip-path';
-		case 'Color':
-			return 'color';
-		case 'ColumnCount':
-			return 'column-count';
-		case 'ColumnGap':
-			return 'column-gap';
-		case 'ColumnRule':
-			return 'column-rule';
-		case 'ColumnRuleColor':
-			return 'column-rule-color';
-		case 'ColumnRuleWidth':
-			return 'column-rule-width';
-		case 'ColumnWidth':
-			return 'column-width';
-		case 'Columns':
-			return 'columns';
-		case 'Filter':
-			return 'filter';
-		case 'Flex':
-			return 'flex';
-		case 'FlexBasis':
-			return 'flex-basis';
-		case 'FlexGrow':
-			return 'flex-grow';
-		case 'FlexShrink':
-			return 'flex-shrink';
-		case 'Font':
-			return 'font';
-		case 'FontSize':
-			return 'font-size';
-		case 'FontSizeAdjust':
-			return 'font-size-adjust';
-		case 'FontStretch':
-			return 'font-stretch';
-		case 'FontVariationSettings':
-			return 'font-variation-settings';
-		case 'FontWeight':
-			return 'font-weight';
-		case 'GridColumnGap':
-			return 'grid-column-gap';
-		case 'GridGap':
-			return 'grid-gap';
-		case 'GridRowGap':
-			return 'grid-row-gap';
-		case 'Height':
-			return 'height';
-		case 'Left':
-			return 'left';
-		case 'LetterSpacing':
-			return 'letter-spacing';
-		case 'LineHeight':
-			return 'line-height';
-		case 'Margin':
-			return 'margin';
-		case 'MarginBottom':
-			return 'margin-bottom';
-		case 'MarginLeft':
-			return 'margin-left';
-		case 'MarginRight':
-			return 'margin-right';
-		case 'MarginTop':
-			return 'margin-top';
-		case 'Mask':
-			return 'mask';
-		case 'MaskPosition':
-			return 'mask-position';
-		case 'MaskSize':
-			return 'mask-size';
-		case 'MaxHeight':
-			return 'max-height';
-		case 'MaxWidth':
-			return 'max-width';
-		case 'MinHeight':
-			return 'min-height';
-		case 'MinWidth':
-			return 'min-width';
-		case 'ObjectPosition':
-			return 'object-position';
-		case 'Offset':
-			return 'offset';
-		case 'OffsetAnchor':
-			return 'offset-anchor';
-		case 'OffsetDistance':
-			return 'offset-distance';
-		case 'OffsetPath':
-			return 'offset-path';
-		case 'OffsetRotate':
-			return 'offset-rotate';
-		case 'Opacity':
-			return 'opacity';
-		case 'Order':
-			return 'order';
-		case 'Outline':
-			return 'outline';
-		case 'OutlineColor':
-			return 'outline-color';
-		case 'OutlineOffset':
-			return 'outline-offset';
-		case 'OutlineWidth':
-			return 'outline-width';
-		case 'Padding':
-			return 'padding';
-		case 'PaddingBottom':
-			return 'padding-bottom';
-		case 'PaddingLeft':
-			return 'padding-left';
-		case 'PaddingRight':
-			return 'padding-right';
-		case 'PaddingTop':
-			return 'padding-top';
-		case 'Right':
-			return 'right';
-		case 'TabSize':
-			return 'tab-size';
-		case 'TextIndent':
-			return 'text-indent';
-		case 'TextShadow':
-			return 'text-shadow';
-		case 'Top':
-			return 'top';
-		case 'Transform':
-			return 'transform';
-		case 'TransformOrigin':
-			return 'transform-origin';
-		case 'VerticalAlign':
-			return 'vertical-align';
-		case 'Visibility':
-			return 'visibility';
-		case 'Width':
-			return 'width';
-		case 'WordSpacing':
-			return 'word-spacing';
-		default:
-			return 'z-index';
-	}
-};
-var $rtfeldman$elm_css$Css$Transitions$timeToString = function (time) {
-	return $elm$core$String$fromFloat(time) + 'ms';
-};
-var $rtfeldman$elm_css$Css$Transitions$timingFunctionToString = function (tf) {
-	switch (tf.$) {
-		case 'Ease':
-			return 'ease';
-		case 'Linear':
-			return 'linear';
-		case 'EaseIn':
-			return 'ease-in';
-		case 'EaseOut':
-			return 'ease-out';
-		case 'EaseInOut':
-			return 'ease-in-out';
-		case 'StepStart':
-			return 'step-start';
-		case 'StepEnd':
-			return 'step-end';
-		default:
-			var _float = tf.a;
-			var float2 = tf.b;
-			var float3 = tf.c;
-			var float4 = tf.d;
-			return 'cubic-bezier(' + ($elm$core$String$fromFloat(_float) + (' , ' + ($elm$core$String$fromFloat(float2) + (' , ' + ($elm$core$String$fromFloat(float3) + (' , ' + ($elm$core$String$fromFloat(float4) + ')')))))));
-	}
-};
-var $rtfeldman$elm_css$Css$Transitions$transition = function (options) {
-	var v = A3(
-		$elm$core$String$slice,
-		0,
-		-1,
-		A3(
-			$elm$core$List$foldl,
-			F2(
-				function (_v0, s) {
-					var animation = _v0.a.animation;
-					var duration = _v0.a.duration;
-					var delay = _v0.a.delay;
-					var timing = _v0.a.timing;
-					return s + (A2(
-						$elm$core$String$join,
-						' ',
-						_List_fromArray(
-							[
-								$rtfeldman$elm_css$Css$Transitions$propToString(animation),
-								$rtfeldman$elm_css$Css$Transitions$timeToString(duration),
-								A2(
-								$elm$core$Maybe$withDefault,
-								'',
-								A2($elm$core$Maybe$map, $rtfeldman$elm_css$Css$Transitions$timeToString, delay)),
-								A2(
-								$elm$core$Maybe$withDefault,
-								'',
-								A2($elm$core$Maybe$map, $rtfeldman$elm_css$Css$Transitions$timingFunctionToString, timing))
-							])) + ',');
-				}),
-			'',
-			options));
-	return A2($rtfeldman$elm_css$Css$property, 'transition', v);
-};
 var $author$project$Main$header = function (model) {
 	var logo = A2(
 		$rtfeldman$elm_css$Html$Styled$img,
@@ -9594,24 +9305,6 @@ var $author$project$Main$header = function (model) {
 					]))
 			]),
 		_List_Nil);
-	var jumpOnHover = $rtfeldman$elm_css$Html$Styled$Attributes$css(
-		_List_fromArray(
-			[
-				$rtfeldman$elm_css$Css$position($rtfeldman$elm_css$Css$relative),
-				$rtfeldman$elm_css$Css$top(
-				$rtfeldman$elm_css$Css$px(0)),
-				$rtfeldman$elm_css$Css$hover(
-				_List_fromArray(
-					[
-						$rtfeldman$elm_css$Css$top(
-						$rtfeldman$elm_css$Css$px(-10))
-					])),
-				$rtfeldman$elm_css$Css$Transitions$transition(
-				_List_fromArray(
-					[
-						A3($rtfeldman$elm_css$Css$Transitions$top3, 200, 20, $rtfeldman$elm_css$Css$Transitions$ease)
-					]))
-			]));
 	var headerItem = F2(
 		function (msg, label) {
 			return A2(
@@ -9619,7 +9312,7 @@ var $author$project$Main$header = function (model) {
 				_List_fromArray(
 					[
 						$rtfeldman$elm_css$Html$Styled$Events$onClick(msg),
-						jumpOnHover,
+						$rtfeldman$elm_css$Html$Styled$Attributes$class('headerContainer'),
 						$rtfeldman$elm_css$Html$Styled$Attributes$css(
 						_List_fromArray(
 							[
@@ -9633,7 +9326,10 @@ var $author$project$Main$header = function (model) {
 					[
 						A2(
 						$rtfeldman$elm_css$Html$Styled$div,
-						_List_Nil,
+						_List_fromArray(
+							[
+								$rtfeldman$elm_css$Html$Styled$Attributes$class('headerText')
+							]),
 						_List_fromArray(
 							[
 								$rtfeldman$elm_css$Html$Styled$text(label)
