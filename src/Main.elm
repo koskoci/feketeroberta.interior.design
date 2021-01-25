@@ -110,6 +110,7 @@ viewPage model =
             [ width (px standardWidth)
             , margin auto
             , color theme.primary
+            , letterSpacing (px 1.5)
             ]
         ]
         [ div
@@ -196,7 +197,7 @@ header model =
             , alignItems stretch
             , fontSize (px 20)
             , padding3 (px 20) zero (px 20)
-            , letterSpacing (px 1.5)
+            , cursor pointer
             ]
         ]
         [ logo
@@ -220,7 +221,7 @@ footer =
             [ css
                 [ padding3 (px 40) zero (px 20) ]
             ]
-            [ text "© 2020 Fekete Roberta" ]
+            [ text "© 2021 Fekete Roberta" ]
         ]
 
 
@@ -273,6 +274,7 @@ enteriors =
                 , css
                     [ padding4 zero (px padding) (px padding) zero
                     , Css.width (px width)
+                    , cursor pointer
                     ]
                 ]
                 []
@@ -298,6 +300,7 @@ moodboards =
                 , css
                     [ padding4 zero (px padding) (px padding) zero
                     , Css.width (px width)
+                    , cursor pointer
                     ]
                 ]
                 []
@@ -331,7 +334,6 @@ about =
                 , lineHeight (num 1.5)
                 , fontStyle italic
                 , textAlign justify
-                , letterSpacing (px 1.5)
                 ]
             ]
             [ text "Belső terek kialakítása magán és céges ügyfeleknek, egyedi igény szerint, megtalálva a megfelelő harmóniát, stílust, funkcionalitást. Segítek összhangot teremteni.\n" ]
@@ -349,7 +351,6 @@ contact =
                     , justifyContent flexStart
                     , padding4 zero (px 50) (px 20) (px 50)
                     , width (pct 100)
-                    , letterSpacing (px 1.5)
                     ]
                 ]
                 [ img [ src icon, css [ paddingRight (px 25) ] ] [], text label ]
