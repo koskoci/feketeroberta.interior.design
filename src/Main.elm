@@ -91,7 +91,9 @@ cmdNone model =
 
 view : Model -> Html Msg
 view model =
-    div [ class "app" ]
+    div
+        [ class "app"
+        ]
         [ case model.carouselVisible of
             Just tab ->
                 viewCarousel tab model
@@ -178,7 +180,7 @@ header model =
             , justifyContent spaceBetween
             , alignItems stretch
             , fontSize (px 20)
-            , padding3 (px 40) zero (px 20)
+            , padding3 (px 20) zero (px 20)
             , letterSpacing (px 1.5)
             ]
         ]
@@ -241,7 +243,7 @@ home : Html Msg
 home =
     img
         [ Html.Styled.Attributes.width standardWidth
-        , src "assets/portré2.jpg"
+        , src "assets/enteriorok/3 PIX7983.jpg"
         ]
         []
 
@@ -283,21 +285,20 @@ about =
     div
         [ css
             [ displayFlex
-            , alignItems center
-            , height (px standardHeight)
             ]
         ]
         [ img
-            [ Html.Styled.Attributes.width (standardWidth // 2)
-            , src "assets/portré1.jpg"
+            [ src "assets/portré2.jpg"
+            , css [ height (px standardHeight) ]
             ]
             []
         , div
             [ css
-                [ padding4 zero (px 50) zero (px 30)
+                [ padding4 (px 200) (px 25) zero (px 90)
                 , lineHeight (num 1.5)
                 , fontStyle italic
                 , textAlign justify
+                , letterSpacing (px 1.5)
                 ]
             ]
             [ text "Belső terek kialakítása magán és céges ügyfeleknek, egyedi igény szerint, megtalálva a megfelelő harmóniát, stílust, funkcionalitást. Segítek összhangot teremteni.\n" ]
@@ -313,27 +314,30 @@ contact =
                     [ display inlineFlex
                     , alignItems center
                     , justifyContent flexStart
-                    , padding (px 20)
+                    , padding4 zero (px 50) (px 20) (px 50)
                     , width (pct 100)
+                    , letterSpacing (px 1.5)
                     ]
                 ]
-                [ img [ src icon, css [ paddingRight (px 40) ] ] [], text label ]
+                [ img [ src icon, css [ paddingRight (px 25) ] ] [], text label ]
     in
     div
         [ css
             [ displayFlex
-            , alignItems center
-            , justifyContent center
             , height (px standardHeight)
             ]
         ]
-        [ div
+        [ img
+            [ Html.Styled.Attributes.width (standardWidth // 2)
+            , src "assets/portré1.jpg"
+            ]
+            []
+        , div
             [ css
                 [ displayFlex
                 , flexDirection column
                 , alignItems flexStart
-                , justifyContent center
-                , height (px (standardHeight / 4))
+                , padding4 (px 200) (px 50) zero (px 50)
                 ]
             ]
             [ contactItem "assets/phone.svg" "+36 70 338 1317"

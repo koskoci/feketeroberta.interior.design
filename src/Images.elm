@@ -1,8 +1,7 @@
 module Images exposing (..)
 
 enteriorok =
-    [ "./assets/enteriorok/S 12621948_959632030758276_4427596913601600779_o.jpg"
-    , "./assets/enteriorok/PIX2615.jpg"
+    [ "./assets/enteriorok/PIX2615.jpg"
     , "./assets/enteriorok/IMG_1513_edited.jpg"
     , "./assets/enteriorok/IMG_1407_edited.jpg"
     , "./assets/enteriorok/19 PIX7778.jpg"
