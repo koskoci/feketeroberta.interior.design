@@ -9286,6 +9286,7 @@ var $author$project$Main$HomeClicked = {$: 'HomeClicked'};
 var $author$project$Main$MoodboardsClicked = {$: 'MoodboardsClicked'};
 var $rtfeldman$elm_css$Css$flexEnd = $rtfeldman$elm_css$Css$prop1('flex-end');
 var $rtfeldman$elm_css$Css$flexGrow = $rtfeldman$elm_css$Css$prop1('flex-grow');
+var $rtfeldman$elm_css$Css$letterSpacing = $rtfeldman$elm_css$Css$prop1('letter-spacing');
 var $rtfeldman$elm_css$Css$marginRight = $rtfeldman$elm_css$Css$prop1('margin-right');
 var $rtfeldman$elm_css$Css$spaceBetween = $rtfeldman$elm_css$Css$prop1('space-between');
 var $rtfeldman$elm_css$Css$stretch = $rtfeldman$elm_css$Css$prop1('stretch');
@@ -9348,22 +9349,24 @@ var $author$project$Main$header = function (model) {
 						$rtfeldman$elm_css$Css$justifyContent($rtfeldman$elm_css$Css$spaceBetween),
 						$rtfeldman$elm_css$Css$alignItems($rtfeldman$elm_css$Css$stretch),
 						$rtfeldman$elm_css$Css$fontSize(
-						$rtfeldman$elm_css$Css$px(24)),
+						$rtfeldman$elm_css$Css$px(20)),
 						A3(
 						$rtfeldman$elm_css$Css$padding3,
 						$rtfeldman$elm_css$Css$px(40),
 						$rtfeldman$elm_css$Css$zero,
-						$rtfeldman$elm_css$Css$px(20))
+						$rtfeldman$elm_css$Css$px(20)),
+						$rtfeldman$elm_css$Css$letterSpacing(
+						$rtfeldman$elm_css$Css$px(1.5))
 					]))
 			]),
 		_List_fromArray(
 			[
 				logo,
-				A2(headerItem, $author$project$Main$HomeClicked, '| Fekete Roberta lakberendező'),
-				A2(headerItem, $author$project$Main$EnteriorsClicked, ' | Enteriőr'),
-				A2(headerItem, $author$project$Main$MoodboardsClicked, ' | Látványterv'),
-				A2(headerItem, $author$project$Main$AboutClicked, ' | Rólam'),
-				A2(headerItem, $author$project$Main$ContactClicked, ' | Elérhetőség')
+				A2(headerItem, $author$project$Main$HomeClicked, '| FEKETE ROBERTA lakberendező'),
+				A2(headerItem, $author$project$Main$EnteriorsClicked, ' | ENTERIŐR'),
+				A2(headerItem, $author$project$Main$MoodboardsClicked, ' | LÁTVÁNYTERV'),
+				A2(headerItem, $author$project$Main$AboutClicked, ' | RÓLAM'),
+				A2(headerItem, $author$project$Main$ContactClicked, ' | ELÉRHETŐSÉG')
 			]));
 };
 var $rtfeldman$elm_css$Css$margin = $rtfeldman$elm_css$Css$prop1('margin');

@@ -177,16 +177,17 @@ header model =
             , flexDirection row
             , justifyContent spaceBetween
             , alignItems stretch
-            , fontSize (px 24)
+            , fontSize (px 20)
             , padding3 (px 40) zero (px 20)
+            , letterSpacing (px 1.5)
             ]
         ]
         [ logo
-        , headerItem HomeClicked "| Fekete Roberta lakberendező"
-        , headerItem EnteriorsClicked " | Enteriőr"
-        , headerItem MoodboardsClicked " | Látványterv"
-        , headerItem AboutClicked " | Rólam"
-        , headerItem ContactClicked " | Elérhetőség"
+        , headerItem HomeClicked "| FEKETE ROBERTA lakberendező"
+        , headerItem EnteriorsClicked " | ENTERIŐR"
+        , headerItem MoodboardsClicked " | LÁTVÁNYTERV"
+        , headerItem AboutClicked " | RÓLAM"
+        , headerItem ContactClicked " | ELÉRHETŐSÉG"
         ]
 
 
