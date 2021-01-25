@@ -151,6 +151,7 @@ header model =
         logo =
             img
                 [ src "assets/FR-no-margin.png"
+                , onClick HomeClicked
                 , css
                     [ height (px 80)
                     , marginRight (px 30)
@@ -162,6 +163,20 @@ header model =
             div
                 [ onClick msg
                 , class "headerContainer"
+                , css
+                    [ flexGrow (num 1)
+                    , displayFlex
+                    , alignItems flexEnd
+                    ]
+                ]
+                [ div
+                    [ class "headerText" ]
+                    [ text label ]
+                ]
+
+        passiveHeaderItem msg label =
+            div
+                [ onClick msg
                 , css
                     [ flexGrow (num 1)
                     , displayFlex
@@ -185,7 +200,7 @@ header model =
             ]
         ]
         [ logo
-        , headerItem HomeClicked "| FEKETE ROBERTA lakberendező"
+        , passiveHeaderItem HomeClicked "| FEKETE ROBERTA lakberendező"
         , headerItem EnteriorsClicked " | ENTERIŐR"
         , headerItem MoodboardsClicked " | LÁTVÁNYTERV"
         , headerItem AboutClicked " | RÓLAM"
