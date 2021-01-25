@@ -198,6 +198,9 @@ header model =
             , fontSize (px 20)
             , padding3 (px 20) zero (px 20)
             , cursor pointer
+            , position sticky
+            , top (px 0)
+            , backgroundColor theme.secondary
             ]
         ]
         [ logo
@@ -383,7 +386,7 @@ contact =
 theme : { secondary : Color, primary : Color }
 theme =
     { primary = rgb 0 0 0
-    , secondary = rgb 250 240 230
+    , secondary = rgb 255 255 255
     }
 
 
