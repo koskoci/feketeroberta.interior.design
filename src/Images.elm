@@ -1,8 +1,7 @@
 module Images exposing (..)
 
 enteriorok =
-    [ "./assets/enteriorok/_2 PIX7973.jpg"
-    , "./assets/enteriorok/S 12621948_959632030758276_4427596913601600779_o.jpg"
+    [ "./assets/enteriorok/S 12621948_959632030758276_4427596913601600779_o.jpg"
     , "./assets/enteriorok/_20 PIX7823.jpg"
     , "./assets/enteriorok/_11 PIX7919.jpg"
     , "./assets/enteriorok/IMG_1513_edited.jpg"
@@ -35,6 +34,7 @@ enteriorok =
     , "./assets/enteriorok/_PIX2301.jpg"
     , "./assets/enteriorok/IMG_1489_edited.jpg"
     , "./assets/enteriorok/Roberta-lakas-brody-26m.jpg"
+    , "./assets/enteriorok/2 PIX7973.jpg"
     , "./assets/enteriorok/_PIX2477.jpg"
     , "./assets/enteriorok/_PIX2339.jpg"
     , "./assets/enteriorok/_PIX2503.jpg"
