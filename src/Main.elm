@@ -340,7 +340,7 @@ contact =
                 , padding4 (px 200) (px 50) zero (px 50)
                 ]
             ]
-            [ contactItem "assets/phone.svg" "+36 70 338 1317"
+            [ contactItem "assets/phone.svg" "+36 70 882 0477"
             , contactItem "assets/email.svg" "fekete.roberta@gmail.com"
             ]
         ]
