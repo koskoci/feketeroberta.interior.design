@@ -253,15 +253,24 @@ enteriors =
     let
         wrap image =
             img
-                [ Html.Styled.Attributes.width standardWidth
-                , src image
+                [ src image
                 , onClick EnteriorsImageClicked
+                , css
+                    [ padding4 zero (px padding) (px padding) zero
+                    , Css.width (px width)
+                    ]
                 ]
                 []
+
+        width =
+            (standardWidth - 2 * padding) / 3 + 15
+
+        padding =
+            20
     in
     Images.enteriorok
         |> List.map wrap
-        |> div []
+        |> div [ css [ displayFlex, flexDirection column, flexWrap Css.wrap, height (px 7600) ] ]
 
 
 moodboards : Html Msg
@@ -269,11 +278,20 @@ moodboards =
     let
         wrap image =
             img
-                [ Html.Styled.Attributes.width standardWidth
-                , src image
+                [ src image
                 , onClick MoodboardsImageClicked
+                , css
+                    [ padding4 zero (px padding) (px padding) zero
+                    , Css.width (px width)
+                    ]
                 ]
                 []
+
+        width =
+            (standardWidth - padding) / 2 + 10
+
+        padding =
+            20
     in
     Images.latvanytervek
         |> List.map wrap
@@ -354,7 +372,7 @@ theme =
 
 
 standardWidth =
-    960
+    980
 
 
 standardHeight =
