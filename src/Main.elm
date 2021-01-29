@@ -6,7 +6,7 @@ import Browser
 import Css exposing (..)
 import Css.Transitions exposing (transition)
 import Html.Attributes
-import Html.Styled exposing (Html, a, div, fromUnstyled, img, li, text, toUnstyled, ul)
+import Html.Styled exposing (Html, a, div, fromUnstyled, img, li, span, text, toUnstyled, ul)
 import Html.Styled.Attributes exposing (attribute, class, css, src)
 import Html.Styled.Events exposing (onClick)
 import Images
@@ -110,6 +110,7 @@ viewPage model =
             [ width (px standardWidth)
             , margin auto
             , color theme.primary
+            , fontFamilies [ "Dosis" ]
             , letterSpacing (px 1.5)
             ]
         ]
@@ -175,27 +176,45 @@ header model =
                     [ text label ]
                 ]
 
-        passiveHeaderItem msg label =
+        passiveHeaderItem msg name label =
             div
                 [ onClick msg
                 , css
                     [ flexGrow (num 1)
                     , displayFlex
-                    , alignItems flexEnd
+                    , justifyContent end
+                    , width (px 300)
+                    , letterSpacing (px 3.0)
                     ]
                 ]
                 [ div
                     [ class "headerText" ]
-                    [ text label ]
+                    [ div
+                        [ css
+                            [ fontFamilies [ "Big Shoulders Stencil Display" ]
+                            , fontSize (px 61)
+                            , position relative
+                            , left (px -2)
+                            , top (px -4)
+                            ]
+                        ]
+                        [ text name ]
+                    , div
+                        [ css
+                            [ letterSpacing (px 16.5) ]
+                        ]
+                        [ text label ]
+                    ]
                 ]
     in
     div
         [ css
             [ displayFlex
             , flexDirection row
-            , justifyContent spaceBetween
             , alignItems stretch
             , fontSize (px 20)
+            , fontFamilies [ "Unica One" ]
+            , letterSpacing (px 2.0)
             , padding3 (px 20) zero (px 20)
             , cursor pointer
             , position sticky
@@ -204,11 +223,11 @@ header model =
             ]
         ]
         [ logo
-        , passiveHeaderItem HomeClicked "| FEKETE ROBERTA lakberendező"
-        , headerItem EnteriorsClicked " | ENTERIŐR"
-        , headerItem MoodboardsClicked " | LÁTVÁNYTERV"
-        , headerItem AboutClicked " | RÓLAM"
-        , headerItem ContactClicked " | ELÉRHETŐSÉG"
+        , passiveHeaderItem HomeClicked "Fekete Roberta" "lakberendező"
+        , headerItem EnteriorsClicked "| enteriőr"
+        , headerItem MoodboardsClicked "| látványterv"
+        , headerItem AboutClicked "| rólam"
+        , headerItem ContactClicked "| elérhetőség"
         ]
 
 
@@ -335,8 +354,8 @@ about =
             [ css
                 [ padding4 (px 200) (px 25) zero (px 90)
                 , lineHeight (num 1.5)
-                , fontStyle italic
                 , textAlign justify
+                , fontStyle italic
                 ]
             ]
             [ text "Belső terek kialakítása magán és céges ügyfeleknek, egyedi igény szerint, megtalálva a megfelelő harmóniát, stílust, funkcionalitást. Segítek összhangot teremteni.\n" ]
