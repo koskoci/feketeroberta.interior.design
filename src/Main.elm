@@ -3,6 +3,7 @@ module Main exposing (..)
 import Bootstrap.Carousel as Carousel
 import Bootstrap.Carousel.Slide as Slide
 import Browser
+import Browser.Navigation as Nav
 import Css exposing (..)
 import Css.Transitions exposing (transition)
 import Html.Attributes
@@ -10,15 +11,18 @@ import Html.Styled exposing (Html, a, div, fromUnstyled, img, li, text, toUnstyl
 import Html.Styled.Attributes exposing (attribute, class, css, src)
 import Html.Styled.Events exposing (onClick)
 import Images
+import Url
 
 
 main : Program () Model Msg
 main =
-    Browser.element
-        { init = \_ -> initialModel |> cmdNone
-        , subscriptions = \model -> Carousel.subscriptions model.carouselState CarouselMsg
+    Browser.application
+        { init = init
+        , view = view
         , update = update
-        , view = view >> toUnstyled
+        , subscriptions = \model -> Carousel.subscriptions model.carouselState CarouselMsg
+        , onUrlChange = UrlChanged
+        , onUrlRequest = LinkClicked
         }
 
 
@@ -26,6 +30,8 @@ type alias Model =
     { tab : Tab
     , carouselState : Carousel.State
     , carouselVisible : Maybe Tab
+    , key : Nav.Key
+    , url : Url.Url
     }
 
 
@@ -37,12 +43,15 @@ type Tab
     | Contact
 
 
-initialModel : Model
-initialModel =
+init : () -> Url.Url -> Nav.Key -> ( Model, Cmd Msg )
+init flags url key =
     { tab = Home
     , carouselState = Carousel.initialState
     , carouselVisible = Nothing
+    , key = key
+    , url = url
     }
+        |> cmdNone
 
 
 type Msg
@@ -54,6 +63,8 @@ type Msg
     | EnteriorsImageClicked
     | MoodboardsImageClicked
     | CarouselMsg Carousel.Msg
+    | LinkClicked Browser.UrlRequest
+    | UrlChanged Url.Url
 
 
 update : Msg -> Model -> ( Model, Cmd msg )
@@ -83,14 +94,38 @@ update msg model =
         CarouselMsg subMsg ->
             { model | carouselState = Carousel.update subMsg model.carouselState } |> cmdNone
 
+        LinkClicked urlRequest ->
+            case urlRequest of
+                Browser.Internal url ->
+                    ( model
+                    , url |> Url.toString |> Nav.pushUrl model.key
+                    )
+
+                Browser.External href ->
+                    ( model
+                    , Nav.load href
+                    )
+
+        UrlChanged url ->
+            ( { model | url = url }
+            , Cmd.none
+            )
+
 
 cmdNone : Model -> ( Model, Cmd msg )
 cmdNone model =
     ( model, Cmd.none )
 
 
-view : Model -> Html Msg
+view : Model -> Browser.Document Msg
 view model =
+    { title = "Fekete Roberta lakberendező"
+    , body = [ model |> body |> toUnstyled ]
+    }
+
+
+body : Model -> Html Msg
+body model =
     div
         [ class "app"
         ]
