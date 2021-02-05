@@ -1,8 +1,6 @@
 module Main exposing (..)
 
 import Array
-import Bootstrap.Carousel as Carousel
-import Bootstrap.Carousel.Slide as Slide
 import Browser
 import Browser.Navigation as Nav
 import Css exposing (..)
@@ -21,7 +19,7 @@ main =
         { init = init
         , view = view
         , update = update
-        , subscriptions = \model -> Carousel.subscriptions model.carouselState CarouselMsg
+        , subscriptions = \_ -> Sub.none
         , onUrlChange = UrlChanged
         , onUrlRequest = LinkClicked
         }
@@ -29,8 +27,6 @@ main =
 
 type alias Model =
     { tab : Tab
-    , carouselState : Carousel.State
-    , carouselVisible : Maybe Tab
     , key : Nav.Key
     , url : Url.Url
     }
@@ -47,8 +43,6 @@ type Tab
 init : () -> Url.Url -> Nav.Key -> ( Model, Cmd Msg )
 init flags url key =
     { tab = Home
-    , carouselState = Carousel.initialState
-    , carouselVisible = Nothing
     , key = key
     , url = url
     }
@@ -63,7 +57,6 @@ type Msg
     | ContactClicked
     | EnteriorsImageClicked Index
     | MoodboardsImageClicked Index
-    | CarouselMsg Carousel.Msg
     | LinkClicked Browser.UrlRequest
     | UrlChanged Url.Url
 
@@ -91,13 +84,10 @@ update msg model =
             { model | tab = Contact } |> cmdNone
 
         EnteriorsImageClicked index ->
-            { model | carouselVisible = Just Enteriors } |> cmdNone
+            model |> cmdNone
 
         MoodboardsImageClicked index ->
-            { model | carouselVisible = Just Moodboards } |> cmdNone
-
-        CarouselMsg subMsg ->
-            { model | carouselState = Carousel.update subMsg model.carouselState } |> cmdNone
+            model |> cmdNone
 
         LinkClicked urlRequest ->
             case urlRequest of
@@ -134,12 +124,7 @@ body model =
     div
         [ class "app"
         ]
-        [ case model.carouselVisible of
-            Just tab ->
-                viewCarousel tab model
-
-            Nothing ->
-                viewPage model
+        [ viewPage model
         ]
 
 
@@ -157,33 +142,6 @@ viewPage model =
             [ css [ width (pct 100) ] ]
             (header model :: content model :: [ footer ])
         ]
-
-
-viewCarousel : Tab -> Model -> Html Msg
-viewCarousel tab model =
-    let
-        images =
-            case tab of
-                Enteriors ->
-                    Images.enteriorok
-
-                Moodboards ->
-                    Images.latvanytervek
-
-                _ ->
-                    []
-
-        slides =
-            images
-                |> List.map (Slide.image [ Html.Attributes.class "slide" ])
-                |> List.map (Slide.config [])
-    in
-    Carousel.config CarouselMsg [ Html.Attributes.class "carousel" ]
-        |> Carousel.withControls
-        |> Carousel.withIndicators
-        |> Carousel.slides slides
-        |> Carousel.view model.carouselState
-        >> fromUnstyled
 
 
 header : Model -> Html Msg
