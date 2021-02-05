@@ -1,5 +1,6 @@
 module Main exposing (..)
 
+import Array
 import Bootstrap.Carousel as Carousel
 import Bootstrap.Carousel.Slide as Slide
 import Browser
@@ -60,11 +61,15 @@ type Msg
     | MoodboardsClicked
     | AboutClicked
     | ContactClicked
-    | EnteriorsImageClicked
-    | MoodboardsImageClicked
+    | EnteriorsImageClicked Index
+    | MoodboardsImageClicked Index
     | CarouselMsg Carousel.Msg
     | LinkClicked Browser.UrlRequest
     | UrlChanged Url.Url
+
+
+type alias Index =
+    Int
 
 
 update : Msg -> Model -> ( Model, Cmd msg )
@@ -85,10 +90,10 @@ update msg model =
         ContactClicked ->
             { model | tab = Contact } |> cmdNone
 
-        EnteriorsImageClicked ->
+        EnteriorsImageClicked index ->
             { model | carouselVisible = Just Enteriors } |> cmdNone
 
-        MoodboardsImageClicked ->
+        MoodboardsImageClicked index ->
             { model | carouselVisible = Just Moodboards } |> cmdNone
 
         CarouselMsg subMsg ->
@@ -305,10 +310,10 @@ home =
 enteriors : Html Msg
 enteriors =
     let
-        wrap image =
+        wrap index image =
             img
                 [ src image
-                , onClick EnteriorsImageClicked
+                , onClick (EnteriorsImageClicked index)
                 , css
                     [ padding4 zero (px padding) (px padding) zero
                     , Css.width (px width)
@@ -324,17 +329,19 @@ enteriors =
             20
     in
     Images.enteriorok
-        |> List.map wrap
+        |> Array.fromList
+        |> Array.indexedMap wrap
+        |> Array.toList
         |> div [ css [ displayFlex, flexDirection column, flexWrap Css.wrap, height (px 7600) ] ]
 
 
 moodboards : Html Msg
 moodboards =
     let
-        wrap image =
+        wrap index image =
             img
                 [ src image
-                , onClick MoodboardsImageClicked
+                , onClick (MoodboardsImageClicked index)
                 , css
                     [ padding4 zero (px padding) (px padding) zero
                     , Css.width (px width)
@@ -350,7 +357,9 @@ moodboards =
             20
     in
     Images.latvanytervek
-        |> List.map wrap
+        |> Array.fromList
+        |> Array.indexedMap wrap
+        |> Array.toList
         |> div []
 
 
