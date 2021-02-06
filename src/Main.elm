@@ -10,7 +10,8 @@ import Html.Styled exposing (Html, a, div, fromUnstyled, img, li, text, toUnstyl
 import Html.Styled.Attributes exposing (attribute, class, css, src)
 import Html.Styled.Events exposing (onClick)
 import Images
-import Url
+import Url exposing (Url)
+import Url.Parser as Parser exposing ((</>), (<?>), Parser, int, map, oneOf, parse, s)
 
 
 main : Program () Model Msg
@@ -26,27 +27,52 @@ main =
 
 
 type alias Model =
-    { tab : Tab
+    { route : Route
     , key : Nav.Key
-    , url : Url.Url
     }
 
 
-type Tab
+type Route
     = Home
-    | Enteriors
-    | Moodboards
+    | Enteriors (Maybe Index)
+    | Moodboards (Maybe Index)
     | About
     | Contact
 
 
-init : () -> Url.Url -> Nav.Key -> ( Model, Cmd Msg )
-init flags url key =
-    { tab = Home
-    , key = key
-    , url = url
-    }
-        |> cmdNone
+type alias Index =
+    Int
+
+
+parser : Parser (Route -> a) a
+parser =
+    oneOf
+        [ map Home Parser.top
+
+        -- if the index were kept in a query string rather than the path,
+        -- the next two lines could be contracted down to this single one:
+        -- map Enteriors (s "enterior" <?> Query.string "q")
+        , map (Enteriors Nothing) (s "enterior")
+        , map (Enteriors << Just) (s "enterior" </> Parser.int)
+        , map (Moodboards Nothing) (s "latvanyterv")
+        , map (Moodboards << Just) (s "latvanyterv" </> Parser.int)
+        , map About (s "rolam")
+        , map Contact (s "elerhetoseg")
+        ]
+
+
+parse : Url -> Maybe Route
+parse url =
+    url |> Parser.parse parser
+
+
+init : () -> Url -> Nav.Key -> ( Model, Cmd Msg )
+init _ url key =
+    ( { route = parse url |> Maybe.withDefault Home
+      , key = key
+      }
+    , Cmd.none
+    )
 
 
 type Msg
@@ -58,36 +84,40 @@ type Msg
     | EnteriorsImageClicked Index
     | MoodboardsImageClicked Index
     | LinkClicked Browser.UrlRequest
-    | UrlChanged Url.Url
-
-
-type alias Index =
-    Int
+    | UrlChanged Url
 
 
 update : Msg -> Model -> ( Model, Cmd msg )
 update msg model =
     case msg of
         HomeClicked ->
-            { model | tab = Home } |> cmdNone
+            ( model, "/" |> Nav.pushUrl model.key )
 
         EnteriorsClicked ->
-            { model | tab = Enteriors } |> cmdNone
+            ( model, "/enterior" |> Nav.pushUrl model.key )
 
         MoodboardsClicked ->
-            { model | tab = Moodboards } |> cmdNone
+            ( model, "/latvanyterv" |> Nav.pushUrl model.key )
 
         AboutClicked ->
-            { model | tab = About } |> cmdNone
+            ( model, "/rolam" |> Nav.pushUrl model.key )
 
         ContactClicked ->
-            { model | tab = Contact } |> cmdNone
+            ( model, "/elerhetoseg" |> Nav.pushUrl model.key )
 
         EnteriorsImageClicked index ->
-            model |> cmdNone
+            let
+                path =
+                    String.concat [ "/enterior/", String.fromInt index ]
+            in
+            ( model, path |> Nav.pushUrl model.key )
 
         MoodboardsImageClicked index ->
-            model |> cmdNone
+            let
+                path =
+                    String.concat [ "/latvanyterv/", String.fromInt index ]
+            in
+            ( model, path |> Nav.pushUrl model.key )
 
         LinkClicked urlRequest ->
             case urlRequest of
@@ -102,7 +132,9 @@ update msg model =
                     )
 
         UrlChanged url ->
-            ( { model | url = url }
+            ( { model
+                | route = url |> parse |> Maybe.withDefault Home
+              }
             , Cmd.none
             )
 
@@ -113,23 +145,23 @@ cmdNone model =
 
 
 view : Model -> Browser.Document Msg
-view model =
+view { route } =
     { title = "Fekete Roberta lakberendező"
-    , body = [ model |> body |> toUnstyled ]
+    , body = [ route |> body |> toUnstyled ]
     }
 
 
-body : Model -> Html Msg
-body model =
+body : Route -> Html Msg
+body route =
     div
         [ class "app"
         ]
-        [ viewPage model
+        [ viewPage route
         ]
 
 
-viewPage : Model -> Html Msg
-viewPage model =
+viewPage : Route -> Html Msg
+viewPage route =
     div
         [ css
             [ width (px standardWidth)
@@ -140,19 +172,19 @@ viewPage model =
         ]
         [ div
             [ css [ width (pct 100) ] ]
-            (header model :: content model :: [ footer ])
+            (header :: content route :: [ footer ])
         ]
 
 
-header : Model -> Html Msg
-header model =
+header : Html Msg
+header =
     let
         logo =
             img
                 [ src "assets/FR-no-margin.png"
                 , onClick HomeClicked
                 , css
-                    [ height (px 80)
+                    [ height (px 60)
                     , marginRight (px 30)
                     ]
                 ]
@@ -226,27 +258,27 @@ footer =
         ]
 
 
-content : Model -> Html Msg
-content model =
+content : Route -> Html Msg
+content route =
     div
         [ css
             [ minHeight (px 500)
             , fontSize (px 20)
             ]
         ]
-        [ content_ model ]
+        [ content_ route ]
 
 
-content_ : Model -> Html Msg
-content_ { tab } =
-    case tab of
+content_ : Route -> Html Msg
+content_ route =
+    case route of
         Home ->
             home
 
-        Enteriors ->
+        Enteriors _ ->
             enteriors
 
-        Moodboards ->
+        Moodboards _ ->
             moodboards
 
         About ->
