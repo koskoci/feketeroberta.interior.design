@@ -10,8 +10,25 @@
   <!-- <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet"> -->
   <link rel="stylesheet" type="text/css" href="assets/css/reset.css" />
   <link rel="stylesheet" type="text/css" href="assets/css/custom.css" />
-  <script type="text/javascript" src="/elm.min.js"></script>
   <link rel="icon" type="image/png" href="assets/FR-background.png">
+  
+  <script type="text/javascript">
+    // Single Page Apps for GitHub Pages
+    // MIT License
+    // https://github.com/rafgraph/spa-github-pages
+    (function(l) {
+      if (l.search[1] === '/' ) {
+        var decoded = l.search.slice(1).split('&').map(function(s) { 
+          return s.replace(/~and~/g, '&')
+        }).join('?');
+        window.history.replaceState(null, null,
+            l.pathname.slice(0, -1) + decoded + l.hash
+        );
+      }
+    }(window.location))
+  </script>
+
+  <script type="text/javascript" src="/elm.min.js"></script>
 </head>
 
 <body>
