@@ -83,7 +83,7 @@ enteriorok =
     ]
 
 latvanytervek =
-    [ "./assets/latvanytervek/01 előszoba.jpg"
+    [ "./assets/latvanytervek/01 eloszoba.jpg"
     , "./assets/latvanytervek/01 konyha.jpg"
     , "./assets/latvanytervek/02 konyha.jpg"
     , "./assets/latvanytervek/02 nappali.jpg"
