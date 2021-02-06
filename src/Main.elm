@@ -292,7 +292,7 @@ home : Html Msg
 home =
     img
         [ Html.Styled.Attributes.width standardWidth
-        , src "assets/enteriorok/3 PIX7983.jpg"
+        , src "assets/enteriorok/03 PIX7983.jpg"
         ]
         []
 
