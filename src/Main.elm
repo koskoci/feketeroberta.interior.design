@@ -11,7 +11,7 @@ import Html.Styled.Attributes exposing (attribute, class, css, src)
 import Html.Styled.Events exposing (onClick)
 import Images
 import Url exposing (Url)
-import Url.Parser as Parser exposing ((</>), (<?>), Parser, int, map, oneOf, parse, s)
+import Url.Parser as Parser exposing ((</>), (<?>), Parser, int, map, oneOf, s)
 
 
 main : Program () Model Msg
@@ -61,14 +61,14 @@ parser =
         ]
 
 
-parse : Url -> Maybe Route
+parse : Url -> Route
 parse url =
-    url |> Parser.parse parser
+    url |> Parser.parse parser |> Maybe.withDefault Home
 
 
 init : () -> Url -> Nav.Key -> ( Model, Cmd Msg )
 init _ url key =
-    ( { route = parse url |> Maybe.withDefault Home
+    ( { route = parse url
       , key = key
       }
     , Cmd.none
@@ -132,9 +132,7 @@ update msg model =
                     )
 
         UrlChanged url ->
-            ( { model
-                | route = url |> parse |> Maybe.withDefault Home
-              }
+            ( { model | route = parse url }
             , Cmd.none
             )
 
@@ -181,7 +179,7 @@ header =
     let
         logo =
             img
-                [ src "assets/FR-no-margin.png"
+                [ src "/assets/FR-no-margin.png"
                 , onClick HomeClicked
                 , css
                     [ height (px logoHeight)
@@ -324,7 +322,7 @@ home : Html Msg
 home =
     img
         [ Html.Styled.Attributes.width standardWidth
-        , src "assets/enteriorok/03 PIX7983.jpg"
+        , src "/assets/enteriorok/03 PIX7983.jpg"
         ]
         []
 
@@ -396,7 +394,7 @@ about =
             ]
         ]
         [ img
-            [ src "assets/portré2.jpg"
+            [ src "/assets/portré2.jpg"
             , css [ height (px standardHeight) ]
             ]
             []
@@ -435,7 +433,7 @@ contact =
         ]
         [ img
             [ Html.Styled.Attributes.width (standardWidth // 2)
-            , src "assets/portré1.jpg"
+            , src "/assets/portré1.jpg"
             ]
             []
         , div
@@ -446,8 +444,8 @@ contact =
                 , padding4 (px 200) (px 50) zero (px 50)
                 ]
             ]
-            [ contactItem "assets/phone.svg" "+36 70 882 0477"
-            , contactItem "assets/email.svg" "fekete.roberta@gmail.com"
+            [ contactItem "/assets/phone.svg" "+36 70 882 0477"
+            , contactItem "/assets/email.svg" "fekete.roberta@gmail.com"
             ]
         ]
 
