@@ -223,8 +223,6 @@ header =
         [ css
             [ displayFlex
             , flexDirection row
-            , justifyContent spaceBetween
-            , alignItems stretch
             , fontSize (px 20)
             , padding3 (px standardPadding) zero (px standardPadding)
             , cursor pointer
@@ -288,8 +286,18 @@ content_ route =
             in
             fileName |> enlargedImage
 
-        Moodboards _ ->
+        Moodboards Nothing ->
             moodboards
+
+        Moodboards (Just index) ->
+            let
+                fileName =
+                    Images.latvanytervek
+                        |> Array.fromList
+                        |> Array.get index
+                        |> Maybe.withDefault ""
+            in
+            fileName |> enlargedImage
 
         About ->
             about
@@ -330,7 +338,7 @@ enteriors =
                 , onClick (EnteriorsImageClicked index)
                 , css
                     [ boxSizing borderBox
-                    , padding4 zero (px padding) (px padding) zero
+                    , padding4 zero (px standardPadding) (px standardPadding) zero
                     , Css.width (px width)
                     , cursor pointer
                     ]
@@ -338,10 +346,7 @@ enteriors =
                 []
 
         width =
-            (standardWidth - 2 * padding) / 3 + 15
-
-        padding =
-            20
+            (standardWidth - 2 * standardPadding) / 3 + 15
     in
     Images.enteriorok
         |> Array.fromList
@@ -366,7 +371,7 @@ moodboards =
                 , onClick (MoodboardsImageClicked index)
                 , css
                     [ boxSizing borderBox
-                    , padding4 zero (px padding) (px padding) zero
+                    , padding4 zero (px standardPadding) (px standardPadding) zero
                     , Css.width (px width)
                     , cursor pointer
                     ]
@@ -374,10 +379,7 @@ moodboards =
                 []
 
         width =
-            (standardWidth - padding) / 2 + 10
-
-        padding =
-            20
+            (standardWidth - standardPadding) / 2 + 10
     in
     Images.latvanytervek
         |> Array.fromList
