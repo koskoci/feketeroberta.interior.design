@@ -329,7 +329,8 @@ enteriors =
                 [ src image
                 , onClick (EnteriorsImageClicked index)
                 , css
-                    [ padding4 zero (px padding) (px padding) zero
+                    [ boxSizing borderBox
+                    , padding4 zero (px padding) (px padding) zero
                     , Css.width (px width)
                     , cursor pointer
                     ]
@@ -346,7 +347,14 @@ enteriors =
         |> Array.fromList
         |> Array.indexedMap wrap
         |> Array.toList
-        |> div [ css [ displayFlex, flexDirection column, flexWrap Css.wrap, height (px 7600) ] ]
+        |> div
+            [ css
+                [ displayFlex
+                , flexDirection column
+                , flexWrap Css.wrap
+                , height (px 7600)
+                ]
+            ]
 
 
 moodboards : Html Msg
@@ -357,7 +365,8 @@ moodboards =
                 [ src image
                 , onClick (MoodboardsImageClicked index)
                 , css
-                    [ padding4 zero (px padding) (px padding) zero
+                    [ boxSizing borderBox
+                    , padding4 zero (px padding) (px padding) zero
                     , Css.width (px width)
                     , cursor pointer
                     ]

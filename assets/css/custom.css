@@ -2,16 +2,6 @@ body {
   font-family: 'Dosis', sans-serif;
 }
 
-.carousel {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.slide {
-  
-}
-
 .headerText {
   position: relative;
   top: 0px;
