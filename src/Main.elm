@@ -49,7 +49,7 @@ parser =
     oneOf
         [ map Home Parser.top
 
-        -- if the index were kept in a query string rather than the path,
+        -- if the index were kept in a query string ?q=42 rather than the path,
         -- the next two lines could be contracted down to this single one:
         -- map Enteriors (s "enterior" <?> Query.string "q")
         , map (Enteriors Nothing) (s "enterior")
@@ -184,7 +184,7 @@ header =
                 [ src "assets/FR-no-margin.png"
                 , onClick HomeClicked
                 , css
-                    [ height (px 60)
+                    [ height (px logoHeight)
                     , marginRight (px 30)
                     ]
                 ]
@@ -226,7 +226,7 @@ header =
             , justifyContent spaceBetween
             , alignItems stretch
             , fontSize (px 20)
-            , padding3 (px 20) zero (px 20)
+            , padding3 (px standardPadding) zero (px standardPadding)
             , cursor pointer
             , position sticky
             , top (px 0)
@@ -252,7 +252,7 @@ footer =
         ]
         [ Html.Styled.footer
             [ css
-                [ padding3 (px 40) zero (px 20) ]
+                [ padding3 (px (2 * standardPadding)) zero (px standardPadding) ]
             ]
             [ text "© 2021 Fekete Roberta" ]
         ]
@@ -275,8 +275,18 @@ content_ route =
         Home ->
             home
 
-        Enteriors _ ->
+        Enteriors Nothing ->
             enteriors
+
+        Enteriors (Just index) ->
+            let
+                fileName =
+                    Images.enteriorok
+                        |> Array.fromList
+                        |> Array.get index
+                        |> Maybe.withDefault ""
+            in
+            fileName |> enlargedImage
 
         Moodboards _ ->
             moodboards
@@ -286,6 +296,20 @@ content_ route =
 
         Contact ->
             contact
+
+
+enlargedImage : String -> Html msg
+enlargedImage url =
+    img
+        [ css
+            [ maxWidth (pct 100)
+            , maxHeight (calc (vh 100) minus (px (logoHeight + 3 * standardPadding)))
+            , display block
+            , margin auto
+            ]
+        , src url
+        ]
+        []
 
 
 home : Html Msg
@@ -430,3 +454,11 @@ standardWidth =
 
 standardHeight =
     640
+
+
+standardPadding =
+    20
+
+
+logoHeight =
+    60

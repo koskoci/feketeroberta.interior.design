@@ -1,5 +1,5 @@
 def list(folder)
-  string = Dir[folder].sort.reduce "    [ " do |acc, fileName| acc + "\"#{fileName}\"\n    , " end
+  string = Dir[folder].sort.reduce "    [ " do |acc, fileName| acc + "\"#{fileName[1..]}\"\n    , " end
   string = string[0..-3] + "]"
 end
 
