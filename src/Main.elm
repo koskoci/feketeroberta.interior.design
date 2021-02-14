@@ -1,6 +1,6 @@
 module Main exposing (..)
 
-import Array
+import Array exposing (Array)
 import Browser
 import Browser.Navigation as Nav
 import Css exposing (..)
@@ -322,42 +322,53 @@ home : Html Msg
 home =
     img
         [ Html.Styled.Attributes.width standardWidth
-        , src "/assets/enteriorok/03 PIX7983.jpg"
+        , src homeImage
         ]
         []
 
 
+imagesForColumn : Int -> List (Html Msg)
+imagesForColumn column =
+    enteriorImages
+        |> Array.filter (\item -> (item |> Tuple.first) == column)
+        |> Array.map Tuple.second
+        |> Array.toList
+
+
 enteriors : Html Msg
 enteriors =
+    div [ class "row" ]
+        [ div [ class "column" ] (imagesForColumn 1)
+        , div [ class "column" ] (imagesForColumn 2)
+        , div [ class "column" ] (imagesForColumn 3)
+        ]
+
+
+enteriorImages : Array ( Int, Html Msg )
+enteriorImages =
     let
         wrap index image =
-            img
+            let
+                column =
+                    (index |> remainderBy 3) + 1
+            in
+            ( column
+            , img
                 [ src image
                 , onClick (EnteriorsImageClicked index)
                 , css
                     [ boxSizing borderBox
                     , padding4 zero (px standardPadding) (px standardPadding) zero
-                    , Css.width (px width)
+                    , Css.width (pct 100)
                     , cursor pointer
                     ]
                 ]
                 []
-
-        width =
-            (standardWidth - 2 * standardPadding) / 3 + 15
+            )
     in
     Images.enteriorok
         |> Array.fromList
         |> Array.indexedMap wrap
-        |> Array.toList
-        |> div
-            [ css
-                [ displayFlex
-                , flexDirection column
-                , flexWrap Css.wrap
-                , height (px 7600)
-                ]
-            ]
 
 
 moodboards : Html Msg
@@ -471,3 +482,7 @@ standardPadding =
 
 logoHeight =
     60
+
+
+homeImage =
+    "/assets/enteriorok/03 PIX7983.jpg"
