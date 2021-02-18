@@ -248,7 +248,7 @@ footer =
         ]
         [ Html.Styled.footer
             [ css
-                [ padding3 (px (2 * standardPadding)) zero (px standardPadding) ]
+                [ padding3 (px standardPadding) zero (px standardPadding) ]
             ]
             [ text "© 2021 Fekete Roberta" ]
         ]
@@ -276,26 +276,32 @@ content_ route =
 
         Enteriors (Just index) ->
             let
+                normalize =
+                    Images.enteriorok |> List.length |> modBy
+
                 fileName =
                     Images.enteriorok
                         |> Array.fromList
-                        |> Array.get index
+                        |> Array.get (index |> normalize)
                         |> Maybe.withDefault ""
             in
-            fileName |> enlargedImage
+            fileName |> imageViewer route
 
         Moodboards Nothing ->
             moodboards
 
         Moodboards (Just index) ->
             let
+                normalize =
+                    Images.latvanytervek |> List.length |> modBy
+
                 fileName =
                     Images.latvanytervek
                         |> Array.fromList
-                        |> Array.get index
+                        |> Array.get (index |> normalize)
                         |> Maybe.withDefault ""
             in
-            fileName |> enlargedImage
+            fileName |> imageViewer route
 
         About ->
             about
@@ -304,18 +310,95 @@ content_ route =
             contact
 
 
+imageViewer : Route -> String -> Html Msg
+imageViewer route url =
+    let
+        ( msg, index ) =
+            case route of
+                Enteriors (Just i) ->
+                    ( EnteriorsImageClicked, i )
+
+                Moodboards (Just i) ->
+                    ( MoodboardsImageClicked, i )
+
+                _ ->
+                    ( EnteriorsImageClicked, 0 )
+
+        normalizeFor route_ =
+            case route_ of
+                Enteriors _ ->
+                    Images.enteriorok |> List.length |> modBy
+
+                Moodboards _ ->
+                    Images.latvanytervek |> List.length |> modBy
+
+                _ ->
+                    always 0
+
+        prevIndex =
+            (index - 1) |> normalizeFor route
+
+        nextIndex =
+            (index + 1) |> normalizeFor route
+    in
+    viewImageViewer msg prevIndex nextIndex url
+
+
+viewImageViewer : (Int -> Msg) -> Int -> Int -> String -> Html Msg
+viewImageViewer msg prevIndex nextIndex url =
+    let
+        leftArrow =
+            img
+                [ onClick <| msg <| prevIndex
+                , src "/assets/navigate_before.svg"
+                ]
+                []
+
+        rightArrow =
+            img
+                [ onClick <| msg <| nextIndex
+                , src "/assets/navigate_next.svg"
+                ]
+                []
+    in
+    div
+        [ css
+            [ displayFlex
+            , flexDirection row
+            , position relative
+            , left (px -24)
+            , width (calc (pct 100) plus (px 24))
+            ]
+        ]
+        [ leftArrow
+        , enlargedImage url
+        , rightArrow
+        ]
+
+
 enlargedImage : String -> Html msg
 enlargedImage url =
-    img
+    let
+        height_ =
+            calc (vh 100) minus (px (logoHeight + 4 * standardPadding + 16))
+    in
+    div
         [ css
-            [ maxWidth (pct 100)
-            , maxHeight (calc (vh 100) minus (px (logoHeight + 3 * standardPadding)))
-            , display block
-            , margin auto
+            [ height height_
+            , width (pct 100)
+            , displayFlex
             ]
-        , src url
         ]
-        []
+        [ img
+            [ css
+                [ maxWidth (pct 100)
+                , maxHeight (pct 100)
+                , margin auto
+                ]
+            , src url
+            ]
+            []
+        ]
 
 
 home : Html Msg
