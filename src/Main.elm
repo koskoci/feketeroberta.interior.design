@@ -7,7 +7,7 @@ import Css exposing (..)
 import Css.Transitions exposing (transition)
 import Html.Attributes
 import Html.Styled exposing (Html, a, div, fromUnstyled, img, li, text, toUnstyled, ul)
-import Html.Styled.Attributes exposing (attribute, class, css, src)
+import Html.Styled.Attributes exposing (attribute, class, css, id, src)
 import Html.Styled.Events exposing (onClick)
 import Images
 import Url exposing (Url)
@@ -160,6 +160,14 @@ body route =
 
 viewPage : Route -> Html Msg
 viewPage route =
+    let
+        footer_ =
+            if route == Home then
+                []
+
+            else
+                [ footer ]
+    in
     div
         [ css
             [ width (px standardWidth)
@@ -170,7 +178,7 @@ viewPage route =
         ]
         [ div
             [ css [ width (pct 100) ] ]
-            (header :: content route :: [ footer ])
+            (header :: content route :: footer_)
         ]
 
 
@@ -403,11 +411,22 @@ enlargedImage url =
 
 home : Html Msg
 home =
-    img
-        [ Html.Styled.Attributes.width standardWidth
-        , src homeImage
+    let
+        wrap src_ =
+            img
+                [ Html.Styled.Attributes.width standardWidth
+                , src src_
+                ]
+                []
+    in
+    div [ id "cf" ]
+        [ wrap "/assets/enteriorok/01 PIX7986.jpg"
+        , wrap "/assets/enteriorok/02 PIX7973.jpg"
+        , wrap "/assets/enteriorok/03 PIX7983.jpg"
+        , wrap "/assets/enteriorok/04 PIX7964.jpg"
+        , wrap "/assets/enteriorok/05 PIX7988.jpg"
+        , wrap "/assets/enteriorok/06 PIX7912.jpg"
         ]
-        []
 
 
 imagesForColumn : Int -> List (Html Msg)

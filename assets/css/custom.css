@@ -24,4 +24,28 @@ body {
   clear: both;
 }
 
+#cf img {
+  position: absolute;
+  opacity: 0;
+  animation-name: fader;
+  /* animation-timing-function: ease-out; */
+  animation-iteration-count: infinite;
+  animation-duration: 30s;
+}
 
+ #cf img:nth-child(1) { animation-delay: 0s; }
+ #cf img:nth-child(2) { animation-delay: 5s; }
+ #cf img:nth-child(3) { animation-delay: 10s; }
+ #cf img:nth-child(4) { animation-delay: 15s; }
+ #cf img:nth-child(5) { animation-delay: 20s; }
+ #cf img:nth-child(6) { animation-delay: 25s; }
+
+ @keyframes fader {
+   0% { opacity: 0; } 
+   03.33% { opacity: 1; }
+   06.66% { opacity: 1; }
+   09.99% { opacity: 1; }
+   13.33% { opacity: 1; }
+   16.65% { opacity: 0; }
+   100% { opacity: 0; }
+ }
