@@ -192,6 +192,7 @@ header =
                 , css
                     [ height (px logoHeight)
                     , marginRight (px 30)
+                    , paddingBottom (px standardPadding)
                     ]
                 ]
                 []
@@ -207,7 +208,9 @@ header =
                     ]
                 ]
                 [ div
-                    [ class "headerText" ]
+                    [ class "headerText"
+                    , css [ paddingBottom (px standardPadding) ]
+                    ]
                     [ text label ]
                 ]
 
@@ -218,6 +221,7 @@ header =
                     [ flexGrow (num 1)
                     , displayFlex
                     , alignItems flexEnd
+                    , paddingBottom (px standardPadding)
                     ]
                 ]
                 [ div
@@ -230,7 +234,7 @@ header =
             [ displayFlex
             , flexDirection row
             , fontSize (px 20)
-            , padding3 (px standardPadding) zero (px standardPadding)
+            , marginTop (px standardPadding)
             , cursor pointer
             , position sticky
             , top (px 0)
