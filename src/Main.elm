@@ -511,7 +511,7 @@ about =
             ]
         ]
         [ img
-            [ src "/assets/portré2.jpg"
+            [ src "/assets/portre2.jpg"
             , css [ height (px standardHeight) ]
             ]
             []
@@ -550,7 +550,7 @@ contact =
         ]
         [ img
             [ Html.Styled.Attributes.width (standardWidth // 2)
-            , src "/assets/portré1.jpg"
+            , src "/assets/portre1.jpg"
             ]
             []
         , div
