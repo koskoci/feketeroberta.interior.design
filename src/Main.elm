@@ -86,7 +86,7 @@ type Msg
     | MoodboardsImageClicked Index
     | LinkClicked Browser.UrlRequest
     | UrlChanged Url
-    | ViewImage Album Index
+    | ImageRequested Album Index
 
 
 type Album
@@ -143,7 +143,7 @@ update msg model =
             , Cmd.none
             )
 
-        ViewImage album index ->
+        ImageRequested album index ->
             ( model, index |> toPath album |> Nav.pushUrl model.key )
 
 
@@ -311,13 +311,13 @@ content_ route =
             enteriors
 
         Enteriors (Just index) ->
-            ImageViewer.call (Images.enteriorok |> Array.fromList) height (ViewImage Enterior) index
+            ImageViewer.call (Images.enteriorok |> Array.fromList) height (ImageRequested Enterior) index
 
         Moodboards Nothing ->
             moodboards
 
         Moodboards (Just index) ->
-            ImageViewer.call (Images.latvanytervek |> Array.fromList) height (ViewImage Moodboard) index
+            ImageViewer.call (Images.latvanytervek |> Array.fromList) height (ImageRequested Moodboard) index
 
         About ->
             about
