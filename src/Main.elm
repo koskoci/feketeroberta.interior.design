@@ -6,9 +6,10 @@ import Browser.Navigation as Nav
 import Css exposing (..)
 import Css.Transitions exposing (transition)
 import Html.Attributes
-import Html.Styled exposing (Html, a, div, fromUnstyled, img, li, text, toUnstyled, ul)
+import Html.Styled as Html exposing (Html, a, div, fromUnstyled, img, li, text, toUnstyled, ul)
 import Html.Styled.Attributes exposing (attribute, class, css, id, src)
 import Html.Styled.Events exposing (onClick)
+import ImageViewer
 import Images
 import Url exposing (Url)
 import Url.Parser as Parser exposing ((</>), (<?>), Parser, int, map, oneOf, s)
@@ -85,6 +86,12 @@ type Msg
     | MoodboardsImageClicked Index
     | LinkClicked Browser.UrlRequest
     | UrlChanged Url
+    | ViewImage Album Index
+
+
+type Album
+    = Enterior
+    | Moodboard
 
 
 update : Msg -> Model -> ( Model, Cmd msg )
@@ -135,6 +142,23 @@ update msg model =
             ( { model | route = parse url }
             , Cmd.none
             )
+
+        ViewImage album index ->
+            ( model, index |> toPath album |> Nav.pushUrl model.key )
+
+
+toPath : Album -> Index -> String
+toPath album index =
+    let
+        scope =
+            case album of
+                Moodboard ->
+                    "/latvanyterv/"
+
+                Enterior ->
+                    "/enterior/"
+    in
+    String.concat [ scope, String.fromInt index ]
 
 
 cmdNone : Model -> ( Model, Cmd msg )
@@ -190,7 +214,7 @@ header =
                 [ src "/assets/FR-no-margin.png"
                 , onClick HomeClicked
                 , css
-                    [ height (px logoHeight)
+                    [ Css.height (px logoHeight)
                     , marginRight (px 30)
                     , paddingBottom (px standardPadding)
                     ]
@@ -258,7 +282,7 @@ footer =
             , justifyContent center
             ]
         ]
-        [ Html.Styled.footer
+        [ Html.footer
             [ css
                 [ padding3 (px standardPadding) zero (px standardPadding) ]
             ]
@@ -287,130 +311,19 @@ content_ route =
             enteriors
 
         Enteriors (Just index) ->
-            let
-                normalize =
-                    Images.enteriorok |> List.length |> modBy
-
-                fileName =
-                    Images.enteriorok
-                        |> Array.fromList
-                        |> Array.get (index |> normalize)
-                        |> Maybe.withDefault ""
-            in
-            fileName |> imageViewer route
+            ImageViewer.call (Images.enteriorok |> Array.fromList) height (ViewImage Enterior) index
 
         Moodboards Nothing ->
             moodboards
 
         Moodboards (Just index) ->
-            let
-                normalize =
-                    Images.latvanytervek |> List.length |> modBy
-
-                fileName =
-                    Images.latvanytervek
-                        |> Array.fromList
-                        |> Array.get (index |> normalize)
-                        |> Maybe.withDefault ""
-            in
-            fileName |> imageViewer route
+            ImageViewer.call (Images.latvanytervek |> Array.fromList) height (ViewImage Moodboard) index
 
         About ->
             about
 
         Contact ->
             contact
-
-
-imageViewer : Route -> String -> Html Msg
-imageViewer route url =
-    let
-        ( msg, index ) =
-            case route of
-                Enteriors (Just i) ->
-                    ( EnteriorsImageClicked, i )
-
-                Moodboards (Just i) ->
-                    ( MoodboardsImageClicked, i )
-
-                _ ->
-                    ( EnteriorsImageClicked, 0 )
-
-        normalizeFor route_ =
-            case route_ of
-                Enteriors _ ->
-                    Images.enteriorok |> List.length |> modBy
-
-                Moodboards _ ->
-                    Images.latvanytervek |> List.length |> modBy
-
-                _ ->
-                    always 0
-
-        prevIndex =
-            (index - 1) |> normalizeFor route
-
-        nextIndex =
-            (index + 1) |> normalizeFor route
-    in
-    viewImageViewer msg prevIndex nextIndex url
-
-
-viewImageViewer : (Int -> Msg) -> Int -> Int -> String -> Html Msg
-viewImageViewer msg prevIndex nextIndex url =
-    let
-        leftArrow =
-            img
-                [ onClick <| msg <| prevIndex
-                , src "/assets/navigate_before.svg"
-                ]
-                []
-
-        rightArrow =
-            img
-                [ onClick <| msg <| nextIndex
-                , src "/assets/navigate_next.svg"
-                ]
-                []
-    in
-    div
-        [ css
-            [ displayFlex
-            , flexDirection row
-            , position relative
-            , left (px -24)
-            , width (calc (pct 100) plus (px 24))
-            ]
-        ]
-        [ leftArrow
-        , enlargedImage url
-        , rightArrow
-        ]
-
-
-enlargedImage : String -> Html msg
-enlargedImage url =
-    let
-        height_ =
-            calc (vh 100) minus (px (logoHeight + 4 * standardPadding + 16))
-    in
-    div
-        [ css
-            [ height height_
-            , width (pct 100)
-            , displayFlex
-            ]
-        ]
-        [ img
-            [ css
-                [ maxWidth (pct 100)
-                , maxHeight (pct 100)
-                , margin auto
-                ]
-            , src url
-            ]
-            []
-        ]
 
 
 home : Html Msg
@@ -512,7 +425,7 @@ about =
         ]
         [ img
             [ src "/assets/portre2.jpg"
-            , css [ height (px standardHeight) ]
+            , css [ Css.height (px standardHeight) ]
             ]
             []
         , div
@@ -545,7 +458,7 @@ contact =
     div
         [ css
             [ displayFlex
-            , height (px standardHeight)
+            , Css.height (px standardHeight)
             ]
         ]
         [ img
@@ -592,3 +505,7 @@ logoHeight =
 
 homeImage =
     "/assets/enteriorok/03 PIX7983.jpg"
+
+
+height =
+    calc (vh 100) minus (px (logoHeight + 4 * standardPadding + 16))
